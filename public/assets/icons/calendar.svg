@@ -1,0 +1,11 @@
+<svg id="_2102050_calendar_interface_year_icon" data-name="2102050_calendar_interface_year_icon" xmlns="http://www.w3.org/2000/svg" width="18.105" height="18.105" viewBox="0 0 18.105 18.105">
+  <g id="Layer_x0020_1" transform="translate(2.092 2.381)">
+    <g id="_306569232" transform="translate(2.529)">
+      <path id="_306569424" d="M1.955,1a.106.106,0,1,0-.212,0V3.169a.106.106,0,0,0,.212,0Z" transform="translate(-1.742 -0.898)" fill="#575757"/>
+      <path id="_306569688" d="M5.216,1A.106.106,0,1,0,5,1V3.169a.106.106,0,0,0,.212,0Z" transform="translate(3.647 -0.898)" fill="#575757"/>
+    </g>
+    <path id="Path_4887" data-name="Path 4887" d="M14.71,2.552H.789V11.1a.963.963,0,0,0,.961.961h12a.963.963,0,0,0,.961-.961V2.552Zm-7.854,1.1H8.643V4.866H6.856Zm4.274,0h1.788V4.866H11.13ZM2.581,6.541H4.369V7.755H2.581V6.541Zm4.274,0H8.643V7.755H6.856Zm4.274,0h1.788V7.755H11.13ZM2.581,9.43H4.369v1.214H2.581V9.43Zm4.274,0H8.643v1.214H6.856Zm4.274,0h1.788v1.214H11.13Z" transform="translate(-0.789 1.835)" fill="#575757" fill-rule="evenodd"/>
+    <path id="Path_4888" data-name="Path 4888" d="M.789,4.464H14.71V2.227a.963.963,0,0,0-.961-.961H12.393V2.561a.318.318,0,1,1-.637,0V1.266H3.742V2.561a.318.318,0,1,1-.636,0V1.266H1.75a.963.963,0,0,0-.961.961V4.464Z" transform="translate(-0.789 -0.29)" fill="#575757" fill-rule="evenodd"/>
+  </g>
+  <rect id="Rectangle_2378" data-name="Rectangle 2378" width="18.105" height="18.105" fill="none"/>
+</svg>

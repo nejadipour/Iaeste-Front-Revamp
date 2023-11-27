@@ -1,0 +1,7 @@
+.gradient-button {
+    background-image: linear-gradient(to right, #117C76, #0b3d59);
+}
+
+.gradient-button:hover {
+    background-image: linear-gradient(to right, rgb(40, 134, 130), rgb(33, 85, 121));
+}

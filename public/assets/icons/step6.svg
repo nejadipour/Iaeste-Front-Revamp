@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="90" height="90" viewBox="0 0 90 90">
+  <defs>
+    <linearGradient id="linear-gradient" y1="0.5" x2="0.973" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#0a3f5b"/>
+      <stop offset="1" stop-color="#117c76"/>
+    </linearGradient>
+    <filter id="Ellipse_2" x="0" y="0" width="90" height="90" filterUnits="userSpaceOnUse">
+      <feOffset dx="1" dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feFlood flood-opacity="0.302"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-2" x1="0.035" x2="0.973" xlink:href="#linear-gradient"/>
+  </defs>
+  <g id="_6_icon" data-name="6 icon" transform="translate(-977.5 -1708.5)">
+    <g id="Group_3230" data-name="Group 3230" transform="translate(-675 15)">
+      <g transform="matrix(1, 0, 0, 1, 1652.5, 1693.5)" filter="url(#Ellipse_2)">
+        <circle id="Ellipse_2-2" data-name="Ellipse 2" cx="40.5" cy="40.5" r="40.5" transform="translate(3.5 3.5)" fill="url(#linear-gradient)"/>
+      </g>
+      <g id="Ellipse_2-3" data-name="Ellipse 2" transform="translate(1661 1702)" stroke="#fff" stroke-width="1" fill="url(#linear-gradient-2)">
+        <circle cx="35.5" cy="35.5" r="35.5" stroke="none"/>
+        <circle cx="35.5" cy="35.5" r="35" fill="none"/>
+      </g>
+    </g>
+    <g id="Page-1" transform="translate(665.824 1368.061)">
+      <g id="icon-72-documents" transform="translate(338.396 360.648)">
+        <path id="documents" d="M341.4,366.661v0a3.009,3.009,0,0,0-3,3.017v34.539a3.006,3.006,0,0,0,3,3.016h22.548a23251.628,23251.628,0,0,1,6.011-6.01,3,3,0,0,0,3-2.992V371.166l-9.016-10.518H347.417a2105.439,2105.439,0,0,0-6.015,6.01h0l0,0Zm0,1.5a1.508,1.508,0,0,0-1.5,1.5v34.574a1.505,1.505,0,0,0,1.5,1.5h22.539a1.508,1.508,0,0,0,1.5-1.5l-21.04-.007a3.005,3.005,0,0,1-3-3.016V368.161Zm3-3.006a1.509,1.509,0,0,0-1.5,1.5v34.575a1.506,1.506,0,0,0,1.5,1.5h22.541a1.509,1.509,0,0,0,1.5-1.5v-.007H347.408a3.006,3.006,0,0,1-3-3.017V365.155Zm18.032-3H347.406a1.5,1.5,0,0,0-1.5,1.5V398.22a1.505,1.505,0,0,0,1.5,1.5h22.54a1.5,1.5,0,0,0,1.5-1.493V372.668h-6.013a3,3,0,0,1-3-3.014v-7.5Zm1.5.751v6.749a1.511,1.511,0,0,0,1.5,1.516H371l-7.063-8.265Z" transform="translate(-338.396 -360.648)" fill="#fff" stroke="#fff" stroke-miterlimit="10" stroke-width="1" fill-rule="evenodd"/>
+      </g>
+    </g>
+  </g>
+</svg>

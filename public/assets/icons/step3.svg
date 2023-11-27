@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="90" height="90" viewBox="0 0 90 90">
+  <defs>
+    <linearGradient id="linear-gradient" y1="0.5" x2="0.973" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#0a3f5b"/>
+      <stop offset="1" stop-color="#117c76"/>
+    </linearGradient>
+    <filter id="Ellipse_2" x="0" y="0" width="90" height="90" filterUnits="userSpaceOnUse">
+      <feOffset dx="1" dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feFlood flood-opacity="0.302"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-2" x1="0.035" x2="0.973" xlink:href="#linear-gradient"/>
+  </defs>
+  <g id="_3_icon" data-name="3 icon" transform="translate(-1381.5 -1708.5)">
+    <g id="Group_3225" data-name="Group 3225" transform="translate(-271 15)">
+      <g transform="matrix(1, 0, 0, 1, 1652.5, 1693.5)" filter="url(#Ellipse_2)">
+        <circle id="Ellipse_2-2" data-name="Ellipse 2" cx="40.5" cy="40.5" r="40.5" transform="translate(3.5 3.5)" fill="url(#linear-gradient)"/>
+      </g>
+      <g id="Ellipse_2-3" data-name="Ellipse 2" transform="translate(1661 1702)" stroke="#fff" stroke-width="1" fill="url(#linear-gradient-2)">
+        <circle cx="35.5" cy="35.5" r="35.5" stroke="none"/>
+        <circle cx="35.5" cy="35.5" r="35" fill="none"/>
+      </g>
+    </g>
+    <path id="Path_4928" data-name="Path 4928" d="M954.85,34.237,944.14,22.624l10.72-10.739a.352.352,0,0,1,.6.249V34A.352.352,0,0,1,954.85,34.237Zm-16.358-5.956a3.279,3.279,0,0,1-2.32.963h-.027a3.345,3.345,0,0,1-2.362-.978l-3.174-3.17-10.894,11.09a.352.352,0,0,0,.25.6h33.08a.352.352,0,0,0,.259-.591L942.4,24.368Zm-2.347-1.5h0a.878.878,0,0,0,.622-.257l16.215-16.244a.352.352,0,0,0-.249-.6H919.5a.352.352,0,0,0-.249.6l16.272,16.244A.872.872,0,0,0,936.145,26.779Zm-18.724-14V34.144a.352.352,0,0,0,.6.247l10.841-11.036L918.022,12.531A.352.352,0,0,0,917.421,12.78Z" transform="translate(489.059 1728.77)" fill="#fff"/>
+  </g>
+</svg>

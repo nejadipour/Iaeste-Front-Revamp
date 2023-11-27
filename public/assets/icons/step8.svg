@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="90" height="90" viewBox="0 0 90 90">
+  <defs>
+    <linearGradient id="linear-gradient" y1="0.5" x2="0.973" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#0a3f5b"/>
+      <stop offset="1" stop-color="#117c76"/>
+    </linearGradient>
+    <filter id="Ellipse_2" x="0" y="0" width="90" height="90" filterUnits="userSpaceOnUse">
+      <feOffset dx="1" dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feFlood flood-opacity="0.302"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-2" x1="0.035" x2="0.973" xlink:href="#linear-gradient"/>
+  </defs>
+  <g id="_8_icon" data-name="8 icon" transform="translate(-707.5 -1708.5)">
+    <g id="Group_3233" data-name="Group 3233" transform="translate(-945 15)">
+      <g transform="matrix(1, 0, 0, 1, 1652.5, 1693.5)" filter="url(#Ellipse_2)">
+        <circle id="Ellipse_2-2" data-name="Ellipse 2" cx="40.5" cy="40.5" r="40.5" transform="translate(3.5 3.5)" fill="url(#linear-gradient)"/>
+      </g>
+      <g id="Ellipse_2-3" data-name="Ellipse 2" transform="translate(1661 1702)" stroke="#fff" stroke-width="1" fill="url(#linear-gradient-2)">
+        <circle cx="35.5" cy="35.5" r="35.5" stroke="none"/>
+        <circle cx="35.5" cy="35.5" r="35" fill="none"/>
+      </g>
+    </g>
+    <path id="Path_4929" data-name="Path 4929" d="M1280.79,366.227a3.526,3.526,0,0,0-4.917-.834,3.479,3.479,0,0,0-.451.381L1268.4,372.8l-18.354-5.4a1.58,1.58,0,0,0-1.564.4l-2.025,2.025a1.581,1.581,0,0,0,.264,2.449l13.525,8.68-1.235,1.233a26.287,26.287,0,0,0-2.96,3.553l-9.349-1a1.589,1.589,0,0,0-1.292.456l-1.3,1.3a1.589,1.589,0,0,0,0,2.248,1.646,1.646,0,0,0,.266.213l7.825,5.021,5.029,7.836a1.576,1.576,0,0,0,2.179.476,1.478,1.478,0,0,0,.264-.212l1.31-1.309a1.582,1.582,0,0,0,.453-1.284l-1-9.354a26.33,26.33,0,0,0,3.553-2.962l1.233-1.233,8.671,13.51a1.593,1.593,0,0,0,2.469.267l2.008-2.008a1.592,1.592,0,0,0,.4-1.578l-5.4-18.346,6.889-6.888A3.654,3.654,0,0,0,1280.79,366.227Z" transform="translate(-511.029 1368.86)" fill="#fff"/>
+  </g>
+</svg>
