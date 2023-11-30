@@ -1,4 +1,5 @@
-import {ConfigProvider, Image, Typography} from "antd";
+import {Button, ConfigProvider, Flex, Image, Typography} from "antd";
+import {DoubleLeftOutlined} from "@ant-design/icons";
 
 export default function Banner({banner, buttons}) {
     return (
@@ -6,6 +7,8 @@ export default function Banner({banner, buttons}) {
             theme={{
                 token: {
                     colorTextHeading: "#ffffff",
+                    colorText: "#ffffff",
+                    colorPrimary: "#ffffff"
                 }
             }}
         >
@@ -25,9 +28,31 @@ export default function Banner({banner, buttons}) {
                         padding: "8px",
                         height: "100%",
                         overflow: "hidden",
-                        textAlign: "right"
+                        textAlign: "right",
+                        display: "flex",
+                        alignItems: "center",
                     }}>
-                        <Typography.Title>{"آیسته ایران"}</Typography.Title>
+                        <div style={{marginRight: 50}}>
+                            <Typography.Title
+                                style={{textShadow: '0 0 8px rgba(0, 0, 0, 0.8)'}}>{"آیسته ایران"}</Typography.Title>
+                            <Typography.Title
+                                level={5}>{"فرصت‌های کارآموزی خارج از کشور را از دست ندهید!"}</Typography.Title>
+
+                            <Flex style={{marginTop: 25}}>
+                                <DoubleLeftOutlined style={{marginLeft: 10, color: "#ffffff"}}/>
+                                <Button style={{boxShadow: '0 0 8px rgba(255, 255, 255, 0.8)'}}
+                                        ghost>{"ثبت نام در آزمون ۲۰۲۴"}</Button>
+                            </Flex>
+                        </div>
+
+                        <Flex style={{bottom: 15, left: 20, position: "absolute"}}>
+                            <Image
+                                preview={false}
+                                alt={""}
+                                height={"3vw"}
+                                src={"/assets/images/logo_light.svg"}
+                            />
+                        </Flex>
 
                     </div>
                 </div>
