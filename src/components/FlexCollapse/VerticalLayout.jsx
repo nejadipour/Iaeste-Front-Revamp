@@ -11,10 +11,11 @@ export default function VerticalLayout({item, collapsed}) {
                     <Badge color={"#0b3d59"}
                            style={{borderColor: "transparent"}}
                            count={label}/>
-                    {icon}
+                    <div style={{justifyContent: "center", display: "flex"}}>
+                        {icon}
+                    </div>
                 </Flex>
             </Col>
-
 
             {!collapsed &&
                 <>
