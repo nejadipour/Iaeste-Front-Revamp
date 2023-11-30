@@ -36,12 +36,22 @@ export default function FlexCollapseItem(props) {
         }
     }, [activeKey, item.key])
 
+    const getBackgroundImage = () => {
+        if (mode === "vertical") {
+            return collapsed ? "linear-gradient(to right, #0b3d59, #0b3d59)" : "linear-gradient(to right, #117C76, #0b3d59)"
+        }
+        else {
+            return collapsed ? "linear-gradient(to top, #0b3d59, #0b3d59)" : "linear-gradient(to top, #117C76, #0b3d59)"
+        }
+    }
+
     return (
         <Card
             style={{
-                backgroundImage: collapsed ? "linear-gradient(to right, #0b3d59, #0b3d59)" : "linear-gradient(to right, #117C76, #0b3d59)",
-                minHeight: 230,
-                width: collapsed ? 100 : 500,
+                backgroundImage: getBackgroundImage(),
+                minHeight: mode === "vertical" ? 230 : null,
+                width: mode === "vertical" ? collapsed ? 100 : 500 : null,
+                height: mode === "horizontal" ? collapsed ? 100 : 300 : null,
                 transition: "0.3s ease-in-out",
                 overflow: "hidden",
             }}
