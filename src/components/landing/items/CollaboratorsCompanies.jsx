@@ -21,7 +21,7 @@ export default function CollaboratorsCompanies({companies}) {
             speed={2500}
             roundLengths={true}
         >
-            {companies.map((company) => (
+            {companies?.map((company) => (
                 <SwiperSlide key={company.id}>
                     <CollaboratorCard collaborator={company}/>
                 </SwiperSlide>

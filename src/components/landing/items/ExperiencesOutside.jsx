@@ -33,7 +33,7 @@ export default function ExperiencesOutside(props) {
                         if (bgSwiper) bgSwiper.slideTo(swiperInstance.realIndex)
                     }}
                 >
-                    {experiences.map((exp) => (
+                    {experiences?.map((exp) => (
                         <SwiperSlide key={exp.id}>
                             <ExperienceCard experience={exp} direction={"rtl"}/>
                         </SwiperSlide>
@@ -53,7 +53,7 @@ export default function ExperiencesOutside(props) {
                         clickable: false,
                     }}
                 >
-                    {experiences.map((exp) => (
+                    {experiences?.map((exp) => (
                         <SwiperSlide key={exp.id}>
                             <ExperienceBg/>
                         </SwiperSlide>

@@ -37,24 +37,24 @@ export default function LandingPage() {
 
     return (
         <>
+            <LandingItem id={"banner"}>
+                <Banner/>
+            </LandingItem>
+
+            <LandingItem id={"about-us"} title={"درباره آیسته"}>
+                <AboutUs/>
+            </LandingItem>
+
+            <LandingItem id={"steps"} title={"مراحل پذیرش برای فرصت‌های کارآموزی خارج از کشور"}>
+                <Steps/>
+            </LandingItem>
+
+            <LandingItem id={"map"} title={"تبادل دانشجو آیسته ایران در سطح جهان"}>
+                <Map/>
+            </LandingItem>
+
             {fetched &&
                 <>
-                    <LandingItem id={"banner"}>
-                        <Banner/>
-                    </LandingItem>
-
-                    <LandingItem id={"about-us"} title={"درباره آیسته"}>
-                        <AboutUs/>
-                    </LandingItem>
-
-                    <LandingItem id={"steps"} title={"مراحل پذیرش برای فرصت‌های کارآموزی خارج از کشور"}>
-                        <Steps/>
-                    </LandingItem>
-
-                    <LandingItem id={"map"} title={"تبادل دانشجو آیسته ایران در سطح جهان"}>
-                        <Map/>
-                    </LandingItem>
-
                     <LandingItem id={"experiences"} title={"تجربه‌های کارآموزان داخلی آیسته"}>
                         <ExperiencesOutside experiences={data?.outsideExperience}/>
                     </LandingItem>

@@ -5,7 +5,7 @@ export default function LandingItem(props) {
     const {id, title, children} = props;
 
     return (
-        <Element id={id} style={{paddingBottom: "3rem"}}>
+        <div id={id} style={{paddingBottom: "3rem"}}>
             <ConfigProvider
                 theme={{
                     components: {
@@ -18,6 +18,6 @@ export default function LandingItem(props) {
                 <Typography.Title level={3}>{title}</Typography.Title>
             </ConfigProvider>
             {children}
-        </Element>
+        </div>
     )
 }

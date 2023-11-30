@@ -36,13 +36,13 @@ export default function ExperienceInside({experiences}) {
             roundLengths={true}
             modules={[EffectCoverflow, Pagination, Autoplay]}
         >
-            {experiences.map((exp) => (
+            {experiences?.map((exp) => (
                 <SwiperSlide key={exp.id}>
                     <ExperienceCard experience={exp} direction={"ltr"}/>
                 </SwiperSlide>
             ))}
 
-            {experiences.map((exp) => (
+            {experiences?.map((exp) => (
                 <SwiperSlide key={exp.id}>
                     <ExperienceCard experience={exp} direction={"ltr"}/>
                 </SwiperSlide>

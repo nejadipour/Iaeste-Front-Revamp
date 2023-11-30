@@ -12,7 +12,7 @@ export default function Blogs({blogs}) {
                 grid={{
                     gutter: 18,
                 }}
-                dataSource={blogs.slice(0, 4)}
+                dataSource={blogs?.slice(0, 4)}
                 itemLayout={"horizontal"}
                 renderItem={(item) => (
                     <List.Item>
