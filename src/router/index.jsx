@@ -6,6 +6,7 @@ import LandingPage from "../pages/LandingPage.jsx";
 import BlogsPage from "../pages/BlogsPage.jsx";
 import BlogDetailsPage from "../pages/BlogDetailsPage.jsx";
 import Collaborate from "../pages/collaborate/index.jsx";
+import AboutUsPage from "../pages/AboutUsPage.jsx";
 
 
 export default function Router() {
@@ -14,7 +15,7 @@ export default function Router() {
             <Routes>
                 <Route path="/" element={<MainApp/>}>
                     <Route index element={<LandingPage/>}/>
-                    <Route path="about-us" element={<>ABOUT US</>}/>
+                    <Route path="about-us" element={<AboutUsPage/>}/>
                     <Route path="blogs" element={<BlogsPage/>}/>
                     <Route path="blogs/:id" element={<BlogDetailsPage/>}/>
                     <Route path="collaborate" element={<Collaborate/>}/>

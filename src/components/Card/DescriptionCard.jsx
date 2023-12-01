@@ -4,7 +4,7 @@ import QueueAnim from "rc-queue-anim";
 
 export default function DescriptionCard(props) {
     const [isHovered, setIsHovered] = useState(false);
-    const {src, icon, title, description} = props;
+    const {src, icon, title, description, objectPosition} = props;
 
     return (
         <ConfigProvider
@@ -25,7 +25,7 @@ export default function DescriptionCard(props) {
                         style={{
                             borderRadius: "5px",
                             objectFit: "cover",
-                            objectPosition: "bottom",
+                            objectPosition: objectPosition || "bottom",
                         }}
                         alt={""}
                         src={src}

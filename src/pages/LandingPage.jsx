@@ -10,6 +10,7 @@ import CollaboratorsUniversities from "../components/landing/items/Collaborators
 import CollaboratorsCompanies from "../components/landing/items/CollaboratorsCompanies.jsx";
 import Blogs from "../components/landing/items/Blogs.jsx";
 import Banner from "../components/landing/items/Banner.jsx";
+import {aboutUsText1, aboutUsText2} from "../constants/AboutUsConstants.jsx";
 
 export default function LandingPage() {
     const {client} = useClient();
@@ -42,7 +43,7 @@ export default function LandingPage() {
             </LandingItem>
 
             <LandingItem id={"about-us"} title={"درباره آیسته"}>
-                <AboutUs/>
+                <AboutUs primaryTexts={[aboutUsText1, aboutUsText2]}/>
             </LandingItem>
 
             <LandingItem id={"steps"} title={"مراحل پذیرش برای فرصت‌های کارآموزی خارج از کشور"}>
