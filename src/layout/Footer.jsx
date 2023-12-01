@@ -1,6 +1,6 @@
 import {Col, ConfigProvider, Flex, Image, Layout, Row} from "antd";
 import {Link} from "react-router-dom";
-import {InstagramOutlined, LinkedinOutlined, MailOutlined} from "@ant-design/icons";
+import {InstagramOutlined, LinkedinFilled, MailOutlined} from "@ant-design/icons";
 import TelegramIcon from "../components/icons/TelegramIcon.jsx";
 import MenuItem from "./MenuItem.jsx";
 
@@ -91,7 +91,7 @@ export default function Footer() {
                             </Link>
 
                             <Link to={"https://www.linkedin.com/company/iaeste-iran/"}>
-                                <LinkedinOutlined style={socialMediaIconStyle}/>
+                                <LinkedinFilled style={socialMediaIconStyle}/>
                             </Link>
 
                             <Link to={"https://www.instagram.com/iaeste_iran/"}>

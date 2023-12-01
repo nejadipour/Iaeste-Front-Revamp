@@ -40,7 +40,7 @@ export default function Banner({banner, buttons}) {
 
                             <Flex style={{marginTop: 25}}>
                                 <DoubleLeftOutlined style={{marginLeft: 10, color: "#ffffff"}}/>
-                                <Button style={{boxShadow: '0 0 8px rgba(255, 255, 255, 0.8)'}}
+                                <Button size={"large"} style={{boxShadow: '0 0 8px rgba(255, 255, 255, 0.8)'}}
                                         ghost>{"ثبت نام در آزمون ۲۰۲۴"}</Button>
                             </Flex>
                         </div>
