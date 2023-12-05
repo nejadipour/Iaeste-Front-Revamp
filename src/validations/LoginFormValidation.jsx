@@ -3,6 +3,10 @@ export const loginRules = {
         {
             required: true,
             message: "لطفا ایمیل خود را وارد کنید"
+        },
+        {
+            type: "email",
+            message: "فرمت ورودی اشتباه است"
         }
     ],
     password: [

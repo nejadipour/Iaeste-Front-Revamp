@@ -1,7 +1,7 @@
 import {digitsFaToEn} from "@persian-tools/persian-tools";
 
 const validateMobileNumber = (rule, value, callback) => {
-    const pattern = /^09\d{9}$/;
+    const pattern = /^989\d{9}$/;
 
     if (!value) {
         callback('لطفا شماره همراه خود را وارد کنید')
@@ -17,7 +17,7 @@ export const registerRules = {
     phone: [
         {
             required: true,
-            len: 10,
+            len: 12,
             validator: validateMobileNumber,
         }
     ],
@@ -67,6 +67,5 @@ export const registerRules = {
             required: true,
             message: "لطفا رشته تحصیلی خود را انتخاب کنید",
         }
-
     ]
 }

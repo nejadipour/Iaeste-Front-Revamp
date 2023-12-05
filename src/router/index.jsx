@@ -24,6 +24,8 @@ export default function Router() {
                 </Route>
 
                 <Route path="auth" element={<AuthPage/>}/>
+                <Route path="auth/:mode" element={<AuthPage/>}/>
+                <Route path="auth/:mode/:uuid" element={<AuthPage/>}/>
                 <Route path="*" element={<NotFound/>}/>
             </Routes>
         </BrowserRouter>

@@ -1,4 +1,4 @@
-import {Button, Checkbox, Form, Input, Select} from "antd";
+import {App, Button, Checkbox, Form, Input, Select} from "antd";
 import {useCallback, useEffect, useState} from "react";
 import Popup from "../../components/Popup/index.jsx";
 import RegisterRules from "../../components/auth/RegisterRules.jsx";
@@ -9,22 +9,28 @@ import {registerRules} from "../../validations/RegisterFormValidation.jsx";
 export default function RegisterForm(props) {
     const {switcher} = props;
     const [form] = Form.useForm();
+    const [rulesAgreed, setRulesAgreed] = useState(false);
     const [openRules, setOpenRules] = useState(false);
     const [loading, setLoading] = useState(false);
     const [fetched, setFetched] = useState(false);
     const [fields, setFields] = useState([]);
+    const [universities, setUniversities] = useState([]);
     const {client} = useClient();
     const fieldsBaseQuery = "/fields/";
+    const universitiesBaseQuery = "/university/";
+    const {notification} = App.useApp();
 
     const fetchDependencies = useCallback(() => {
-        const fieldsReq = client.get(fieldsBaseQuery);
-
         setLoading(true);
+        const fieldsReq = client.get(fieldsBaseQuery);
+        const universitiesReq = client.get(universitiesBaseQuery);
         axios.all([
-            fieldsReq
+            fieldsReq,
+            universitiesReq
         ]).then(axios.spread((...responses) => {
             setFetched(true);
             const fieldsResponse = responses[0];
+            const universitiesResponse = responses[1];
 
             const fieldsReceived = []
             fieldsResponse?.data?.forEach((field) => {
@@ -36,12 +42,32 @@ export default function RegisterForm(props) {
             })
             setFields(fieldsReceived);
 
+            const universitiesReceived = []
+            universitiesResponse?.data?.forEach((university) => {
+                universitiesReceived.push({
+                    key: university.id,
+                    value: university.id,
+                    label: university.name
+                })
+            })
+            setUniversities(universitiesReceived);
+
             setLoading(false);
         }))
             .catch(() => {
 
             })
     }, [client])
+
+    const onFinish = (values) => {
+        // client.post("", values)
+        //     .then(() => {
+        //         notification.success({message: "ثبت‌نام با موفقیت انجام شد"})
+        //     })
+        //     .catch(() => {
+        //         notification.error({message: "خطا در ثبت‌نام"});
+        //     })
+    }
 
     useEffect(() => {
         if (!fetched && !loading) {
@@ -51,7 +77,7 @@ export default function RegisterForm(props) {
 
     return (
         <>
-            <Form form={form} requiredMark={false}>
+            <Form form={form} requiredMark={false} onFinish={onFinish}>
                 <div style={{marginTop: '30px', marginBottom: '30px', textAlign: 'center'}}>
                     ثبت نام
                 </div>
@@ -87,7 +113,8 @@ export default function RegisterForm(props) {
                     rules={registerRules.phone}
                 >
                     <Input
-                        placeholder={"موبایل (مثال: ۰۹۱۲۳۴۵۶۷۸۹)"}
+                        addonAfter={"+"}
+                        placeholder={"موبایل (مثال: ۹۸۹۱۲۳۴۵۶۷۸۹)"}
                         size={"large"}
                     />
                 </Form.Item>
@@ -120,6 +147,7 @@ export default function RegisterForm(props) {
                     rules={registerRules.university}
                 >
                     <Select
+                        options={universities}
                         size={"large"}
                         style={{
                             textAlign: "right",
@@ -144,14 +172,14 @@ export default function RegisterForm(props) {
                     />
                 </Form.Item>
 
-                <Form.Item style={{textAlign: "right"}}>
-                    <Checkbox>
+                <div style={{textAlign: "right", marginBottom: 40}}>
+                    <Checkbox onClick={() => setRulesAgreed(!rulesAgreed)}>
                         <a onClick={() => setOpenRules(true)}>قوانین</a> را مطالعه کرده‌ام
                     </Checkbox>
-                </Form.Item>
+                </div>
 
                 <div style={{textAlign: 'center'}}>
-                    <Button type={"primary"} size={"large"}>
+                    <Button disabled={!rulesAgreed} htmlType={"submit"} type={"primary"} size={"large"}>
                         ثبت نام
                     </Button>
                 </div>
