@@ -1,9 +1,12 @@
-import {Button, Col, ConfigProvider, Divider, Image, Layout, Row} from "antd";
+import {Avatar, Button, Col, ConfigProvider, Divider, Flex, Image, Layout, Row, Typography} from "antd";
 import {Link} from "react-router-dom";
 import MainMenu from "./Menu.jsx";
 import LoginIcon from "../components/icons/LoginIcon.jsx";
+import {useAuth} from "../contexts/authentication/AuthContext.jsx";
 
 export default function Header() {
+    const {authUser, loading} = useAuth();
+
     return (
         <ConfigProvider
             theme={{
@@ -31,13 +34,22 @@ export default function Header() {
                         <MainMenu/>
                     </Col>
 
-                    <Col>
-                        <Link to={"/auth"}>
-                            <Button style={{display: "flex"}} type={"primary"} icon={<LoginIcon/>}>
-                                ورود / ثبت نام
-                            </Button>
-                        </Link>
-                    </Col>
+                    {!loading &&
+                        <Col>
+                            {authUser ?
+                                <Flex align={"center"} gap={8}>
+                                    <Avatar src={authUser.profile_pic}/>
+                                    <Typography.Title style={{margin: 0}}
+                                                      level={5}>{`${authUser.first_name} ${authUser.last_name}`}</Typography.Title>
+                                </Flex> :
+                                <Link to={"/auth"}>
+                                    <Button style={{display: "flex"}} type={"primary"} icon={<LoginIcon/>}>
+                                        ورود / ثبت نام
+                                    </Button>
+                                </Link>
+                            }
+                        </Col>
+                    }
                 </Row>
 
                 <ConfigProvider

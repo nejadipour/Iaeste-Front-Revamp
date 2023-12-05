@@ -1,8 +1,9 @@
-import {ConfigProvider} from "antd";
+import {ConfigProvider, App as AntdApp} from "antd";
 import fa_IR from "antd/lib/locale/fa_IR";
 import '../styles/main.css';
 import {ClientProvider} from "../contexts/client/ClientContext.jsx";
 import Router from "../router/index.jsx";
+import {AuthProvider} from "../contexts/authentication/AuthContext.jsx";
 
 
 function App() {
@@ -21,9 +22,16 @@ function App() {
                 },
             }}
             locale={fa_IR}>
-            <ClientProvider>
-                <Router/>
-            </ClientProvider>
+            <AntdApp
+                notification={{rtl: true, placement: "top"}}
+                message={{rtl: true}}
+            >
+                <AuthProvider>
+                    <ClientProvider>
+                        <Router/>
+                    </ClientProvider>
+                </AuthProvider>
+            </AntdApp>
         </ConfigProvider>
     )
 }
