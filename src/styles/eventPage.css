@@ -1,0 +1,40 @@
+.event-page-tag {
+  font-size: 17px;
+  padding: 10px 20px;
+  margin-bottom: 32px;
+  margin-left: 0;
+}
+.event-link {
+  margin-bottom: 32px;
+}
+.event-link-text {
+  color: var(--color-gray);
+  font-weight: 500;
+  border-bottom: 1px solid var(--color-gray);
+  line-height: 16px;
+}
+
+.event-topic {
+  color: var(--color-gray);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.event-page section{
+  margin-bottom: 48px;
+}
+
+.event-img{
+  width: 400px;
+  max-width: 400px;
+  object-fit: contain;
+  border-radius: 16px;
+}
+
+.event-poster{
+  height: 367px;
+  object-fit: cover;
+  object-position: top;
+  width: 100%;
+  border-radius: 12px;
+}
