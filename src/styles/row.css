@@ -1,0 +1,12 @@
+.row:not(:last-of-type) {
+  margin-bottom: 16px;
+}
+.row:last-of-type {
+  margin-bottom: 8px;
+}
+.row-title {
+  white-space: nowrap;
+}
+.row-icon {
+  display: inline-flex;
+}
