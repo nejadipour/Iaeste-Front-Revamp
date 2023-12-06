@@ -27,7 +27,7 @@ export default function Router() {
                     <Route path="collaborate" element={<Collaborate/>}/>
                     <Route path="events" element={<EventsPage />} />
                     <Route path="events/:id" element={<EventPage />} />
-                    <Route path='register' element={<RegisterPage />} />
+                    <Route path='events/register/:id' element={<RegisterPage />} />
                 </Route>
 
                 <Route path="auth" element={<AuthPage/>}/>

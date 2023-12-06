@@ -5,3 +5,8 @@
 .gradient-button:hover {
     background-image: linear-gradient(to right, rgb(40, 134, 130), rgb(33, 85, 121));
 }
+
+.gradient-button:disabled {
+    opacity: 0.8;
+    color: #eeeeee;
+}
