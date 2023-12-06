@@ -1,3 +1,8 @@
+:root{
+    --color-primary: #0B3D59;
+    --color-secondary: #117C76;
+    --color-gray: #707070;
+}
 @font-face {
     font-family: "IRANSans";
     src: local("IRANSans"),
