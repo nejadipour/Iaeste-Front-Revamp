@@ -1,12 +1,76 @@
-import {Avatar, Button, Col, ConfigProvider, Divider, Flex, Image, Layout, Row, Typography} from "antd";
-import {Link} from "react-router-dom";
+import {App, Avatar, Button, Col, ConfigProvider, Divider, Dropdown, Flex, Image, Layout, Row, Typography} from "antd";
+import {Link, useNavigate} from "react-router-dom";
 import MainMenu from "./Menu.jsx";
 import LoginIcon from "../components/icons/LoginIcon.jsx";
 import {useAuth} from "../contexts/authentication/AuthContext.jsx";
 
-export default function Header() {
-    const {authUser, loading} = useAuth();
+const AuthButton = () => {
+    const {authUser, loading, handleLogout} = useAuth();
+    const navigate = useNavigate();
+    const {notification} = App.useApp();
 
+    const logout = () => {
+        try {
+            handleLogout();
+            notification.success({message: "شما از سامانه خارج شدید"})
+            navigate("/");
+        } catch {
+            notification.error({message: "خطایی در خروج از سامانه رخ داد"})
+        }
+    }
+
+    const items = [
+        {
+            key: 'profile',
+            label: "مشاهده پروفایل"
+        },
+        {
+            key: 'logout',
+            label: "خروج"
+        }
+    ]
+
+    const onClick = ({key}) => {
+        if (key === "profile") {
+            navigate("/profile")
+        } else {
+            if (key === "logout") {
+                logout();
+            }
+        }
+    }
+
+    return (
+        <>
+            {!loading &&
+                <>
+                    {authUser ?
+                        <Dropdown
+                            menu={{
+                                items: items,
+                                onClick: onClick,
+                            }}
+                            trigger={["click"]}
+                        >
+                            <Flex align={"center"} gap={8} style={{cursor: "pointer"}}>
+                                <Avatar src={authUser.profile_pic}/>
+                                <Typography.Title style={{margin: 0}}
+                                                  level={5}>{`${authUser.first_name} ${authUser.last_name}`}</Typography.Title>
+                            </Flex>
+                        </Dropdown> :
+                        <Link to={"/auth"}>
+                            <Button style={{display: "flex"}} type={"primary"} icon={<LoginIcon/>}>
+                                ورود / ثبت نام
+                            </Button>
+                        </Link>
+                    }
+                </>
+            }
+        </>
+    )
+}
+
+export default function Header() {
     return (
         <ConfigProvider
             theme={{
@@ -34,22 +98,9 @@ export default function Header() {
                         <MainMenu/>
                     </Col>
 
-                    {!loading &&
-                        <Col>
-                            {authUser ?
-                                <Flex align={"center"} gap={8}>
-                                    <Avatar src={authUser.profile_pic}/>
-                                    <Typography.Title style={{margin: 0}}
-                                                      level={5}>{`${authUser.first_name} ${authUser.last_name}`}</Typography.Title>
-                                </Flex> :
-                                <Link to={"/auth"}>
-                                    <Button style={{display: "flex"}} type={"primary"} icon={<LoginIcon/>}>
-                                        ورود / ثبت نام
-                                    </Button>
-                                </Link>
-                            }
-                        </Col>
-                    }
+                    <Col>
+                        <AuthButton/>
+                    </Col>
                 </Row>
 
                 <ConfigProvider
