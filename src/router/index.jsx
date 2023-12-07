@@ -11,7 +11,7 @@ import ContactUsPage from "../pages/ContactUsPage.jsx";
 import EventsPage from "../pages/EventsPage.jsx";
 import EventPage from "../pages/EventPage.jsx";
 import RegisterPage from "../pages/RegisterPage.jsx";
-
+import ProfilePage from "../pages/ProfilePage.jsx";
 
 
 export default function Router() {
@@ -25,9 +25,10 @@ export default function Router() {
                     <Route path="blogs" element={<BlogsPage/>}/>
                     <Route path="blogs/:id" element={<BlogDetailsPage/>}/>
                     <Route path="collaborate" element={<Collaborate/>}/>
-                    <Route path="events" element={<EventsPage />} />
-                    <Route path="events/:id" element={<EventPage />} />
-                    <Route path='events/register/:id' element={<RegisterPage />} />
+                    <Route path="events" element={<EventsPage/>}/>
+                    <Route path="events/:id" element={<EventPage/>}/>
+                    <Route path="events/register/:id" element={<RegisterPage/>}/>
+                    <Route path={"profile"} element={<ProfilePage/>}/>
                 </Route>
 
                 <Route path="auth" element={<AuthPage/>}/>
