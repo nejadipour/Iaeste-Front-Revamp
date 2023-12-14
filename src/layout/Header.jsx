@@ -3,6 +3,7 @@ import {Link, useNavigate} from "react-router-dom";
 import MainMenu from "./Menu.jsx";
 import LoginIcon from "../components/icons/LoginIcon.jsx";
 import {useAuth} from "../contexts/authentication/AuthContext.jsx";
+import {MenuOutlined} from "@ant-design/icons";
 
 const AuthButton = () => {
     const {authUser, loading, handleLogout} = useAuth();
@@ -53,7 +54,7 @@ const AuthButton = () => {
                             trigger={["click"]}
                         >
                             <Flex align={"center"} gap={8} style={{cursor: "pointer"}}>
-                                <Avatar src={authUser.profile_pic}/>
+                                <Avatar size={"large"} src={authUser.profile_pic}/>
                                 <Typography.Title style={{margin: 0}}
                                                   level={5}>{`${authUser.first_name} ${authUser.last_name}`}</Typography.Title>
                             </Flex>
@@ -70,7 +71,9 @@ const AuthButton = () => {
     )
 }
 
-export default function Header() {
+export default function Header(props) {
+    const {broken, collapsed, setCollapsed} = props;
+
     return (
         <ConfigProvider
             theme={{
@@ -83,25 +86,49 @@ export default function Header() {
             }}
         >
             <Layout.Header style={{height: "100%"}}>
-                <Row gutter={[24, 24]} align={"middle"} justify={"space-between"}>
-                    <Col md={3}>
+                {!broken ?
+                    <Row gutter={[24, 24]} align={"middle"} justify={"space-between"}>
+                        <Col md={3}>
+                            <Link to="/">
+                                <Image
+                                    preview={false}
+                                    alt={""}
+                                    src={"/assets/images/logo_dark.svg"}
+                                />
+                            </Link>
+                        </Col>
+
+                        <Col md={18}>
+                            <MainMenu mode={"horizontal"}/>
+                        </Col>
+
+                        <Col>
+                            <AuthButton/>
+                        </Col>
+                    </Row> :
+
+                    <Flex align={"center"} justify={"space-between"}>
+                        <Button
+                            size={"large"}
+                            type={"text"}
+                            icon={<MenuOutlined style={{fontSize: '20px', color: "#0b3d59"}}/>}
+                            onClick={() => setCollapsed(!collapsed)}
+                            style={{
+                                width: 60,
+                                height: 50,
+                            }}
+                        />
+
                         <Link to="/">
                             <Image
                                 preview={false}
                                 alt={""}
                                 src={"/assets/images/logo_dark.svg"}
+                                style={{height: "5vh"}}
                             />
                         </Link>
-                    </Col>
-
-                    <Col md={18}>
-                        <MainMenu/>
-                    </Col>
-
-                    <Col>
-                        <AuthButton/>
-                    </Col>
-                </Row>
+                    </Flex>
+                }
 
                 <ConfigProvider
                     theme={{
