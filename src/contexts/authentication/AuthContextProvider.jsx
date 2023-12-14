@@ -1,7 +1,7 @@
 import {useCallback, useEffect, useState} from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import {getAccessToken, getBaseURL} from "../../constants/AuthConstants.js";
+import {getAccessToken, getBaseURL} from "../../constants/AuthConstants.jsx";
 
 export const useProvideAuth = () => {
     const [authUser, setAuthUser] = useState(null);

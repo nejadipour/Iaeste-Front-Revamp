@@ -1,5 +1,5 @@
 import axios from "axios"
-import {getAccessToken, getBaseURL} from "../../constants/AuthConstants.js";
+import {getAccessToken, getBaseURL} from "../../constants/AuthConstants.jsx";
 
 
 export const useProvideClient = () => {

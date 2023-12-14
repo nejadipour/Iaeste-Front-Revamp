@@ -1,6 +1,5 @@
 import {Button, Card, Col, ConfigProvider, Flex, Form, Input, Row, Typography} from "antd";
 import {InstagramOutlined, LinkedinFilled, MailOutlined, PhoneFilled} from "@ant-design/icons";
-import {Link} from "react-router-dom";
 import TelegramIcon from "../components/icons/TelegramIcon.jsx";
 
 const contactIconStyle = {fontSize: 20, color: "#ffffff", paddingRight: 10}
