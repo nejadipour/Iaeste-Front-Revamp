@@ -39,9 +39,9 @@ export default function Banner({banner, buttons}) {
                                 level={5}>{"فرصت‌های کارآموزی خارج از کشور را از دست ندهید!"}</Typography.Title>
 
                             <Flex style={{marginTop: 25}}>
-                                <DoubleLeftOutlined style={{marginLeft: 10, color: "#ffffff"}}/>
-                                <Button size={"large"} style={{boxShadow: '0 0 8px rgba(255, 255, 255, 0.8)'}}
-                                        ghost>{"ثبت نام در آزمون ۲۰۲۴"}</Button>
+                                {/*<DoubleLeftOutlined style={{marginLeft: 10, color: "#ffffff"}}/>*/}
+                                {/*<Button size={"large"} style={{boxShadow: '0 0 8px rgba(255, 255, 255, 0.8)'}}*/}
+                                {/*        ghost>{"ثبت نام در آزمون ۲۰۲۴"}</Button>*/}
                             </Flex>
                         </div>
 

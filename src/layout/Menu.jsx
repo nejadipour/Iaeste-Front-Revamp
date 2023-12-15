@@ -69,19 +69,19 @@ export default function MainMenu(props) {
     if (mode === "horizontal") {
         items = [
             ...items,
-            {
-                key: "special",
-                label: <MenuItem to={"/exam"}><GradientButton>آزمون ۲۰۲۴</GradientButton></MenuItem>
-            }
+            // {
+            //     key: "special",
+            //     label: <MenuItem to={"/exam"}><GradientButton>آزمون ۲۰۲۴</GradientButton></MenuItem>
+            // }
         ]
     } else {
         items = [
             ...items,
-            {
-                key: "special",
-                label: <MenuItem to={"/exam"}>{"آزمون ۲۰۲۴"}</MenuItem>,
-                icon: <ExamIcon/>
-            },
+            // {
+            //     key: "special",
+            //     label: <MenuItem to={"/exam"}>{"آزمون ۲۰۲۴"}</MenuItem>,
+            //     icon: <ExamIcon/>
+            // },
             {
                 key: "auth",
                 label: authUser ?
