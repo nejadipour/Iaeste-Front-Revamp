@@ -3,3 +3,9 @@ export const localCommitteeDescription = "کمیته محلی وظیفه‌ی م
 export const marketingCommitteeDescription = "بخش مارکتینگ مسئولیت اطلاع‌رسانی درباره‌ی آقرهای کارآموزی و شرایط آنها را دارد، همچنین با تبلیغات در شبکه‌های اجتماعی و شرکت در ایونت‌ها به جذب دانشجویان می‌پردازد. برگزاری ایونت‌های آیسته نیز به عهده این بخش است."
 
 export const ITCommitteeDescription = "تیم IT مسئولیت پشتیبانی و نگهداری سایت آیسته را بر عهده دارد و هم‌چنین برگزاری آزمون آنلاین هر ساله بر عهده این تیم است."
+
+export const COLLABORATION_TYPES = {
+    student: 'student',
+    university: 'university',
+    company: 'company'
+} 

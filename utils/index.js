@@ -27,3 +27,19 @@ export function fetchFieldsAndUniversities(client) {
     })
   );
 }
+
+
+export function handleCollaborationReq(form, type, client) {
+  console.log(client, form);
+  const formData = new FormData()
+  const fullName = form.first_name + ' ' + form.las_name
+  formData.append('fullName', fullName)
+  formData.append('type', type)
+  for (const key in form) {
+    if (Object.hasOwnProperty.call(form, key)) {
+      const value = form[key];
+      formData.append(key, value)
+    }
+  }
+  return client.post('/career/create/',formData)
+}
