@@ -19,42 +19,42 @@ import {Link} from "react-router-dom";
 const getItems = (mode) => [
     {
         key: "internship",
-        label: <MenuItem type={"link"} to={"/internship"}>{"فرصت‌های کارآموزی"}</MenuItem>,
+        label: <MenuItem to={"/internship"}>{"فرصت‌های کارآموزی"}</MenuItem>,
         icon: mode === "vertical" && <InternshipIcon/>
     },
     {
         key: "events",
-        label: <MenuItem type={"link"} to={"/events"}>{"رویدادها"}</MenuItem>,
+        label: <MenuItem to={"/events"}>{"رویدادها"}</MenuItem>,
         icon: mode === "vertical" && <EventsIcon/>
     },
     {
         key: "steps",
-        label: <MenuItem type={"scroll"} to={"steps"}>{"مراحل پذیرش"}</MenuItem>,
+        label: <MenuItem to={"/"} scroll={"steps"}>{"مراحل پذیرش"}</MenuItem>,
         icon: mode === "vertical" && <StepsIcon/>
     },
     {
         key: "collaborate",
-        label: <MenuItem type={"link"} to={"collaborate"}>{"همکاران"}</MenuItem>,
+        label: <MenuItem to={"/collaborate"}>{"همکاران"}</MenuItem>,
         icon: mode === "vertical" && <CollaborateIcon/>
     },
     {
         key: "weblog",
-        label: <MenuItem type={"scroll"} to={"blog"}>{"وبلاگ و اخبار"}</MenuItem>,
+        label: <MenuItem to={"/"} scroll={"blog"}>{"وبلاگ و اخبار"}</MenuItem>,
         icon: mode === "vertical" && <WeblogIcon/>
     },
     {
         key: "experiences",
-        label: <MenuItem type={"scroll"} to={"experiences"}>{"تجربه‌ها"}</MenuItem>,
+        label: <MenuItem to={"/"} scroll={"experiences"}>{"تجربه‌ها"}</MenuItem>,
         icon: mode === "vertical" && <ExperienceIcon/>
     },
     {
         key: "about-us",
-        label: <MenuItem type={"scroll"} to={"about-us"}>{"درباره ما"}</MenuItem>,
+        label: <MenuItem to={"/"} scroll={"about-us"}>{"درباره ما"}</MenuItem>,
         icon: mode === "vertical" && <AboutUsIcon/>
     },
     {
         key: "contact-us",
-        label: <MenuItem type={"link"} to={"/contact-us"}>{"ارتباط با ما"}</MenuItem>,
+        label: <MenuItem to={"/contact-us"}>{"ارتباط با ما"}</MenuItem>,
         icon: mode === "vertical" && <ContactUsIcon/>
     }
 ]
@@ -71,7 +71,7 @@ export default function MainMenu(props) {
             ...items,
             {
                 key: "special",
-                label: <GradientButton>آزمون ۲۰۲۴</GradientButton>
+                label: <MenuItem to={"/exam"}><GradientButton>آزمون ۲۰۲۴</GradientButton></MenuItem>
             }
         ]
     } else {
@@ -79,7 +79,7 @@ export default function MainMenu(props) {
             ...items,
             {
                 key: "special",
-                label: <MenuItem type={"link"} to={"/exam"}>{"آزمون ۲۰۲۴"}</MenuItem>,
+                label: <MenuItem to={"/exam"}>{"آزمون ۲۰۲۴"}</MenuItem>,
                 icon: <ExamIcon/>
             },
             {

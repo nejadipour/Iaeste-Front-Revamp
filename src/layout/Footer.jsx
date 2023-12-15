@@ -7,8 +7,8 @@ import MenuItem from "./MenuItem.jsx";
 const socialMediaIconStyle = {fontSize: 25, opacity: "50%", color: "#ffffff"}
 const footerItemTextStyle = {color: "#ffffff", opacity: "50%", transition: 'opacity 0.3s ease-in-out'}
 
-const FooterItem = ({type, to, children}) => (
-    <Flex vertical>
+const FooterItem = ({to, scroll, children}) => (
+    <Flex vertical style={{textAlign: "center"}}>
         <MenuItem
             onMouseOver={(e) => {
                 e.target.style.opacity = '1';
@@ -17,8 +17,8 @@ const FooterItem = ({type, to, children}) => (
                 e.target.style.opacity = '0.5';
             }}
             style={footerItemTextStyle}
-            type={type}
             to={to}
+            scroll={scroll}
         >
             {children}
         </MenuItem>
@@ -37,67 +37,63 @@ export default function Footer() {
                 }
             }}
         >
-            <Layout.Footer style={{bottom:0, left: 0, right: 0}}>
+            <Layout.Footer style={{bottom: 0, left: 0, right: 0}}>
                 <Row justify={"space-between"} align={"middle"} gutter={[24, 24]}>
-                    <Col xs={16}>
-                        <Row gutter={[100, 24]}>
-                            <Col>
-                                <FooterItem type={"link"} to={"/internship"}>{"فرصت‌های کارآموزی"}</FooterItem>
-                                <FooterItem type={"link"} to={"/events"}>{"رویدادها"}</FooterItem>
+                    <Col xs={24} xl={18}>
+                        <Row gutter={[100, 10]} justify={"space-evenly"}>
+                            <Col xs={24} md={8} lg={6}>
+                                <FooterItem to={"/internship"}>{"فرصت‌های کارآموزی"}</FooterItem>
+                                <FooterItem to={"/events"}>{"رویدادها"}</FooterItem>
                             </Col>
 
-                            <Col>
-                                <FooterItem type={"scroll"} to={"steps"}>{"مراحل پذیرش"}</FooterItem>
-                                <FooterItem type={"link"} to={"collaborate"}>{"همکاران"}</FooterItem>
+                            <Col xs={24} md={8} lg={6}>
+                                <FooterItem to={"/"} scroll={"steps"}>{"مراحل پذیرش"}</FooterItem>
+                                <FooterItem to={"collaborate"}>{"همکاران"}</FooterItem>
                             </Col>
 
-                            <Col>
-                                <FooterItem type={"link"} to={"blogs"}>{"وبلاگ و اخبار"}</FooterItem>
-                                <FooterItem type={"scroll"} to={"experiences"}>{"تجربه‌ها"}</FooterItem>
+                            <Col xs={24} md={8} lg={6}>
+                                <FooterItem to={"blogs"}>{"وبلاگ و اخبار"}</FooterItem>
+                                <FooterItem to={"/"} scroll={"experiences"}>{"تجربه‌ها"}</FooterItem>
                             </Col>
 
-                            <Col>
-                                <FooterItem type={"scroll"} to={"about-us"}>{"درباره ما"}</FooterItem>
-                                <FooterItem type={"link"} to={"/contact-us"}>{"ارتباط با ما"}</FooterItem>
+                            <Col xs={24} md={8} lg={6}>
+                                <FooterItem to={"about-us"}>{"درباره ما"}</FooterItem>
+                                <FooterItem to={"/contact-us"}>{"ارتباط با ما"}</FooterItem>
                             </Col>
                         </Row>
 
                     </Col>
 
-                    <Col xs={8} flex={"none"}>
-                        <Flex justify={"center"} style={{marginBottom: 12}}>
-                            <Image
-                                preview={false}
-                                alt={""}
-                                height={80}
-                                src={"/assets/images/logo_light.svg"}
-                                style={{opacity: "50%", transition: 'opacity 0.3s ease-in-out',}}
-                                onMouseOver={(e) => {
-                                    e.target.style.opacity = '1';
-                                }}
-                                onMouseOut={(e) => {
-                                    e.target.style.opacity = '0.5';
-                                }}
-                            />
-                        </Flex>
+                    <Col xs={24} xl={6} flex={"auto"}>
+                        <div style={{textAlign: "center"}}>
+                            <Flex justify={"center"} style={{marginBottom: 12}}>
+                                <Image
+                                    preview={false}
+                                    alt={""}
+                                    height={80}
+                                    src={"/assets/images/logo_light.svg"}
+                                    style={{opacity: "50%"}}
+                                />
+                            </Flex>
 
-                        <Flex justify={"center"} gap={12}>
-                            <Link to={"mailto:Iaesteiran@gmail.com"}>
-                                <MailOutlined style={socialMediaIconStyle}/>
-                            </Link>
+                            <Flex justify={"center"} gap={12}>
+                                <Link to={"mailto:Iaesteiran@gmail.com"}>
+                                    <MailOutlined style={socialMediaIconStyle}/>
+                                </Link>
 
-                            <Link to={""}>
-                                <TelegramIcon style={socialMediaIconStyle}/>
-                            </Link>
+                                <Link to={""}>
+                                    <TelegramIcon style={socialMediaIconStyle}/>
+                                </Link>
 
-                            <Link to={"https://www.linkedin.com/company/iaeste-iran/"}>
-                                <LinkedinFilled style={socialMediaIconStyle}/>
-                            </Link>
+                                <Link to={"https://www.linkedin.com/company/iaeste-iran/"}>
+                                    <LinkedinFilled style={socialMediaIconStyle}/>
+                                </Link>
 
-                            <Link to={"https://www.instagram.com/iaeste_iran/"}>
-                                <InstagramOutlined style={socialMediaIconStyle}/>
-                            </Link>
-                        </Flex>
+                                <Link to={"https://www.instagram.com/iaeste_iran/"}>
+                                    <InstagramOutlined style={socialMediaIconStyle}/>
+                                </Link>
+                            </Flex>
+                        </div>
                     </Col>
                 </Row>
             </Layout.Footer>
