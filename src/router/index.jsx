@@ -13,6 +13,7 @@ import EventPage from "../pages/EventPage.jsx";
 import RegisterPage from "../pages/RegisterPage.jsx";
 import ProfilePage from "../pages/ProfilePage.jsx";
 import InternshipPage from "../pages/InternshipPage.jsx";
+import ExamsPage from "../pages/ExamPage.jsx";
 
 
 export default function Router() {
@@ -29,6 +30,7 @@ export default function Router() {
                     <Route path="events" element={<EventsPage/>}/>
                     <Route path="events/:id" element={<EventPage/>}/>
                     <Route path="events/register/:id" element={<RegisterPage/>}/>
+                    <Route path='exam' element={<ExamsPage />} />
                     <Route path={"profile"} element={<ProfilePage/>}/>
                     <Route path={"internship"} element={<InternshipPage/>}/>
                 </Route>

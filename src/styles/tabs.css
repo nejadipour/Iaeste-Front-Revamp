@@ -1,0 +1,15 @@
+.custome-tab .ant-tabs-nav-list {
+  width: 100%;
+}
+.custome-tab .ant-tabs-nav-list .ant-tabs-tab {
+  flex: 1;
+}
+
+.custome-tab .ant-tabs-tab-btn{
+    width: 100%;
+}
+
+.custome-tab .tab-title{
+    margin: 0 auto;
+    transform: translateX(25%);
+}

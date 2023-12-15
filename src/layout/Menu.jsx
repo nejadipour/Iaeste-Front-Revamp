@@ -9,7 +9,7 @@ import WeblogIcon from "../../assets/icons/weblog.svg?react";
 import ExperienceIcon from "../../assets/icons/experience.svg?react";
 import AboutUsIcon from "../../assets/icons/about-us.svg?react";
 import ContactUsIcon from "../../assets/icons/contact-us.svg?react";
-import ExamIcon from "../../assets/icons/exam.svg?react";
+import ExamIcon from "../../assets/icons/exam_menu.svg?react";
 import LogoutIcon from "../../assets/icons/logout.svg?react";
 import LoginIcon from "../../assets/icons/login.svg?react";
 import {useAuth} from "../contexts/authentication/AuthContext.jsx";
