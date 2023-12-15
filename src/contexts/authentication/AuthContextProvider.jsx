@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import {getAccessToken, getBaseURL} from "../../constants/AuthConstants.jsx";
 
 export const useProvideAuth = () => {
-    const [authUser, setAuthUser] = useState({first_name: "علیرضا", last_name: "نژادی‌پور", profile_pic: ""});
+    const [authUser, setAuthUser] = useState(null);
     const [fetched, setFetched] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error401happened, set401Happened] = useState(false);
