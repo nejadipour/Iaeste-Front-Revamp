@@ -6,13 +6,13 @@ import {
     EVENT_TYPES,
 } from "../constants/EventsConstants";
 import {Button, Card, Flex, Image, Typography} from "antd";
-import LocationIcon from "../assets/icons/location.svg?react";
-import TimeIcon from "../assets/icons/time.svg?react";
-import CalendarIcon from "../assets/icons/calendar.svg?react";
-import MapIcon from "../assets/icons/map.svg?react";
-import SaveIcon from "../assets/icons/Save.svg?react";
-import StarIcon from "../assets/icons/Star.svg?react";
-import BulletIcon from "../assets/icons/bullet-point.svg?react";
+import LocationIcon from "../../assets/icons/location_event.svg?react";
+import TimeIcon from "../../assets/icons/time.svg?react";
+import CalendarIcon from "../../assets/icons/calendar_event.svg?react";
+import MapIcon from "../../assets/icons/map.svg?react";
+import SaveIcon from "../../assets/icons/Save.svg?react";
+import StarIcon from "../../assets/icons/Star.svg?react";
+import BulletIcon from "../../assets/icons/bullet-point.svg?react";
 import Row from "../components/Row";
 import "../styles/eventPage.css";
 import GradientButton from "../components/Button/GradientButton";

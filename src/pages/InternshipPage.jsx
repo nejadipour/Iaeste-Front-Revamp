@@ -1,9 +1,9 @@
 import {Col, Row, Typography} from "antd";
 import DescriptionCard from "../components/Card/DescriptionCard.jsx";
 import {ACOffersDescription, COBEOffersDescription, FCFSOffersDescription} from "../constants/InternshipConstants.jsx";
-import FCFSOffersIcon from "../../public/assets/icons/FCFSOffers.svg?react";
-import ACOffersIcon from "../../public/assets/icons/ACOffers.svg?react";
-import COBEOffersIcon from "../../public/assets/icons/COBEOffers.svg?react";
+import FCFSOffersIcon from "../../assets/icons/FCFSOffers.svg?react";
+import ACOffersIcon from "../../assets/icons/ACOffers.svg?react";
+import COBEOffersIcon from "../../assets/icons/COBEOffers.svg?react";
 
 export default function InternshipPage() {
     return (

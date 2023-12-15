@@ -11,9 +11,18 @@ import CollaboratorsCompanies from "../components/landing/items/CollaboratorsCom
 import Blogs from "../components/landing/items/Blogs.jsx";
 import Banner from "../components/landing/items/Banner.jsx";
 import {aboutUsText1, aboutUsText2} from "../constants/AboutUsConstants.jsx";
+import {useLocation} from "react-router-dom";
+import {scroller} from 'react-scroll';
+
+const scrollOptions = {
+    smooth: true,
+    offset: -20,
+    spy: true
+}
 
 export default function LandingPage() {
     const {client} = useClient();
+    const location = useLocation();
     const [fetched, setFetched] = useState(false);
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState(null);
@@ -35,6 +44,12 @@ export default function LandingPage() {
             fetchData();
         }
     }, [fetched, loading, fetchData])
+
+    useEffect(() => {
+        if (location?.state?.scroll) {
+            scroller.scrollTo(location.state.scroll, scrollOptions);
+        }
+    }, [location?.state])
 
     return (
         <>

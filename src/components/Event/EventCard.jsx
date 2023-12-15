@@ -2,9 +2,9 @@ import {Button, Flex, Typography} from "antd";
 import "../../styles/eventCard.css";
 import {BorderedTag, FilledTag} from "../Tag";
 import {EVENT_FORMANT, EVENT_STATUS} from "../../constants/EventsConstants";
-import LocationIcon from "../../assets/icons/location.svg?react";
-import TimeIcon from "../../assets/icons/time.svg?react";
-import CalendarIcon from "../../assets/icons/calendar.svg?react";
+import LocationIcon from "../../../assets/icons/location_event.svg?react";
+import TimeIcon from "../../../assets/icons/time.svg?react";
+import CalendarIcon from "../../../assets/icons/calendar_event.svg?react";
 import {useNavigate} from "react-router-dom";
 import Row from "../Row";
 

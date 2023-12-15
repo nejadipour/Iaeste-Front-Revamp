@@ -8,9 +8,9 @@ import {EditFilled, MailFilled, PhoneFilled, SyncOutlined} from "@ant-design/ico
 import {useNavigate} from "react-router-dom";
 import FieldIcon from "../components/icons/FieldIcon.jsx";
 import UniversityIcon from "../components/icons/UniversityIcon.jsx";
-import UserIcon from "../assets/icons/user-fill.svg?react";
-import CooperationIcon from "../assets/icons/cooperation.svg?react";
-import UploadIcon from "../assets/icons/upload.svg?react";
+import UserIcon from "../../assets/icons/user-fill.svg?react";
+import CooperationIcon from "../../assets/icons/cooperation.svg?react";
+import UploadIcon from "../../assets/icons/upload.svg?react";
 import {digitsEnToFa} from "@persian-tools/persian-tools";
 import GradientButton from "../components/Button/GradientButton.jsx";
 
