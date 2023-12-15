@@ -13,7 +13,7 @@ import EventPage from "../pages/EventPage.jsx";
 import RegisterPage from "../pages/RegisterPage.jsx";
 import ProfilePage from "../pages/ProfilePage.jsx";
 import InternshipPage from "../pages/InternshipPage.jsx";
-import ExamsPage from "../pages/ExamPage.jsx";
+import ExamsPage from "../pages/exam/index.jsx";
 
 
 export default function Router() {

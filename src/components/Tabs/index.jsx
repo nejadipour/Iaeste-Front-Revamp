@@ -1,15 +1,25 @@
-import {ConfigProvider, Flex, Tabs} from "antd";
-import React from "react";
-import "../../styles/tabs.css";
+import {ConfigProvider, Flex, Tabs, Typography} from "antd";
+import React, {useState} from "react";
+// import "../../styles/tabs.css";
 
-const CustomTabs = ({items, onChange, ...props}) => {
+const CustomTabs = ({items, ...props}) => {
+    const [activeKey, setActiveKey] = useState(props.defaultActiveKey);
+
+    const onChange = (newActiveKey) => {
+        setActiveKey(newActiveKey);
+    }
+
+    const items2 = [
+
+    ]
+
     return (
         <div className="custome-tab">
             <ConfigProvider
                 theme={{
                     components: {
                         Tabs: {
-                            // itemSelectedColor: "#ffffff",
+                            itemSelectedColor: "#ffffff",
                             // cardBg: "#0b3d59",
                         },
                     },
@@ -20,10 +30,10 @@ const CustomTabs = ({items, onChange, ...props}) => {
             >
                 <Tabs
                     size={"large"}
+                    defaultActiveKey={activeKey}
                     type={"card"}
-                    tabBarGutter={16}
                     items={items}
-                    onChange={onChange}
+                    onChange={props.onChange || onChange}
                     {...props}
                 />
             </ConfigProvider>
@@ -31,12 +41,16 @@ const CustomTabs = ({items, onChange, ...props}) => {
     );
 };
 
-CustomTabs.Label = function Label({icon, text, ...props}) {
+CustomTabs.Label = function Label({icon, label}) {
+    const labelStyle = {margin: 0, padding: "0px 20px 0px 20px"};
+
     return (
-        <Flex align="center" flex={1} {...props}>
-            {icon}
-            <div className='tab-title'>{text}</div>
-        </Flex>
+        <Typography.Title level={5} style={labelStyle}>
+            <Flex gap={10} align={"center"}>
+                {icon}
+                {label}
+            </Flex>
+        </Typography.Title>
     );
 };
 
