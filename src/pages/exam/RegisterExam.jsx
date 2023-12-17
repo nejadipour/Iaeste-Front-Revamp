@@ -7,7 +7,7 @@ export default function RegisterExam() {
         <Flex gap={40}>
             <Flex vertical justify='space-between' className="exam-forms">
                 <div className="card-layout">
-                    <ProfileInfoForm mode="edit"/>
+                    <ProfileInfoForm />
                 </div>
                 <div className="card-layout">
                     <Form layout="vertical">
