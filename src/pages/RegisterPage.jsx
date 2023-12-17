@@ -2,7 +2,7 @@ import {Button, Flex, Form, Input, Row, Typography} from "antd";
 import React from "react";
 import {useAuth} from "../contexts/authentication/AuthContext.jsx";
 import {useParams} from "react-router-dom";
-import ProfileInfoForm, { PROFILE_FORM_MODE } from "../components/ProfileInfoForm/index.jsx";
+import ProfileInfoForm from "../components/ProfileInfoForm/index.jsx";
 
 
 const RegisterPage = () => {
@@ -13,7 +13,7 @@ const RegisterPage = () => {
         <div>
             <div className="card-layout">
                 <Typography.Title level={3}>مشخصات شرکت کننده</Typography.Title>
-                <ProfileInfoForm mode={PROFILE_FORM_MODE.edit} initialVlaues={authUser}/>
+                <ProfileInfoForm initialVlaues={authUser}/>
             </div>
             <div className="card-layout">
                 <Typography.Title level={3}>سوالات ثبت نام</Typography.Title>

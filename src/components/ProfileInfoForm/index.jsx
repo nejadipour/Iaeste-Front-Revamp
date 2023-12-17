@@ -1,157 +1,162 @@
-import { Col, Flex, Form, Input, Row, Select } from "antd";
+import { Alert, App, Button, Col, Flex, Form, Input, Row, Select } from "antd";
 import { useClient } from "../../contexts/client/ClientContext";
 import GradientButton from "../Button/GradientButton";
-import { useEffect, useState } from "react";
-import { fetchFieldsAndUniversities } from "../../../utils";
+import { useState } from "react";
 import { registerRules } from "../../validations/RegisterFormValidation.jsx";
 import { useProfileOptions } from "../../../utils/hooks/useProfileOptions.js";
 
-export const PROFILE_FORM_MODE = {
-  edit: "edit",
-  add: "add",
-};
-
-
-
-function ProfileInfoForm({ mode, initialVlaues, url }) {
+function ProfileInfoForm({ initialVlaues }) {
   const [dataLoading, setDataLoading] = useState(false);
-  const {fields, universities} = useProfileOptions()
-  const [canEdit, setCanEdit] = useState(mode === PROFILE_FORM_MODE.add);
+  const { fields, universities } = useProfileOptions();
+  const [isEditing, setIsEditing] = useState(false);
   const { client } = useClient();
+  const { notification } = App.useApp();
 
   function handleSubmit(form) {
-    console.log(form);
+    setDataLoading(true);
     client
-      .post(url, form)
+      .patch("/auth/edit_profile/", form)
       .then((res) => {
-        if (mode === PROFILE_FORM_MODE.edit) {
-          toggleEditMode();
-        }
-        console.log(res);
+        notification.success({
+          message: "اطلاعات شما با موفقیت بروزرسانی شد.",
+        });
+        toggleEditMode();
       })
       .catch((error) => {
-        console.log(error);
-      });
+        notification.success({ message: "خطایی رخ داد." });
+      })
+      .finally(() => setDataLoading(false));
   }
 
   function toggleEditMode() {
-    setCanEdit((prev) => !prev);
+    setIsEditing((prev) => !prev);
   }
 
   return (
-    <Form
-      layout="vertical"
-      initialValues={initialVlaues}
-      onFinish={handleSubmit}
-    >
-      <Row gutter={64}>
-        <Col xs={24} md={12}>
-          <Form.Item
-            name="first_name"
-            label="نام"
-            required={false}
-            rules={[{ required: true, message: "نام الزامی است" }]}
-          >
-            <Input placeholder="مهدخت" disabled={!canEdit} />
-          </Form.Item>
-        </Col>
-        <Col xs={24} md={12}>
-          <Form.Item
-            name="last_name"
-            label="نام خانوادگی"
-            required={false}
-            rules={[{ required: true, message: "نام خانوادگی الزامی است" }]}
-          >
-            <Input placeholder="شاه مرادی" disabled={!canEdit} />
-          </Form.Item>
-        </Col>
-      </Row>
-      <Row gutter={64}>
-        <Col xs={24} md={12}>
-          <Form.Item
-            name="email"
-            label="آدرس ایمیل"
-            required={false}
-            rules={[{ required: true, message: "آدرس ایمیل الزامی است" }]}
-          >
-            <Input
-              placeholder="mahdokht.shahmoradi@gamil.com"
-              disabled={initialVlaues?.email || !canEdit}
+    initialVlaues && (
+      <>
+        <Row gutter={64}>
+          <Col xs={24} md={12}>
+            <Alert
+              type="warning"
+              message="شما در حال ویرایش اطلاعات پروفایل خود هستید."
+              style={{ margin: '16px 0' }}
             />
-          </Form.Item>
-        </Col>
-        <Col xs={24} md={12}>
-          <Form.Item
-            name="phone"
-            label="شماره تماس"
-            required={false}
-            rules={[{ required: true, message: "شماره تماس الزامی است" }]}
-          >
-            <Input placeholder="" disabled={!canEdit} />
-          </Form.Item>
-        </Col>
-      </Row>
-      <Row gutter={64}>
-        <Col xs={24} md={12}>
-          <Form.Item
-            name="university"
-            label="دانشگاه محل تحصیل"
-            required={false}
-            rules={registerRules.university}
-          >
-            <Select
-              disabled={!canEdit}
-              options={universities}
-              size={"large"}
-              style={{
-                textAlign: "right",
-              }}
-              placeholder="نام دانشگاه"
-            />
-          </Form.Item>
-        </Col>
-        <Col xs={24} md={12}>
-          <Form.Item
-            name="field"
-            label="رشته تحصیلی"
-            required={false}
-            rules={registerRules.field}
-          >
-            <Select
-              disabled={!canEdit}
-              options={fields}
-              listHeight={200}
-              size="large"
-              style={{
-                textAlign: "right",
-              }}
-              placeholder="رشته تحصیلی"
-            />
-          </Form.Item>
-        </Col>
-      </Row>
+          </Col>
+        </Row>
+        <Form
+          layout="vertical"
+          initialValues={initialVlaues}
+          onFinish={handleSubmit}
+        >
+          <Row gutter={64}>
+            <Col xs={24} md={12}>
+              <Form.Item
+                name="first_name"
+                label="نام"
+                required={false}
+                rules={[{ required: true, message: "نام الزامی است" }]}
+              >
+                <Input placeholder="مهدخت" disabled={!isEditing} />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                name="last_name"
+                label="نام خانوادگی"
+                required={false}
+                rules={[{ required: true, message: "نام خانوادگی الزامی است" }]}
+              >
+                <Input placeholder="شاه مرادی" disabled={!isEditing} />
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row gutter={64}>
+            <Col xs={24} md={12}>
+              <Form.Item
+                name="email"
+                label="آدرس ایمیل"
+                required={false}
+                rules={registerRules.email}
+              >
+                <Input
+                  placeholder="mahdokht.shahmoradi@gamil.com"
+                  disabled={initialVlaues?.email || !isEditing}
+                />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                name="phone"
+                label="شماره تماس"
+                required={false}
+                rules={registerRules.phone}
+              >
+                <Input placeholder="" disabled={!isEditing} />
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row gutter={64}>
+            <Col xs={24} md={12}>
+              <Form.Item
+                name="university"
+                label="دانشگاه محل تحصیل"
+                required={false}
+                rules={registerRules.university}
+              >
+                <Select
+                  disabled={!isEditing}
+                  options={universities}
+                  size={"large"}
+                  style={{
+                    textAlign: "right",
+                  }}
+                  placeholder="نام دانشگاه"
+                />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={12}>
+              <Form.Item
+                name="field"
+                label="رشته تحصیلی"
+                required={false}
+                rules={registerRules.field}
+              >
+                <Select
+                  disabled={!isEditing}
+                  options={fields}
+                  listHeight={200}
+                  size="large"
+                  style={{
+                    textAlign: "right",
+                  }}
+                  placeholder="رشته تحصیلی"
+                />
+              </Form.Item>
+            </Col>
+          </Row>
 
-      <Flex>
-        {mode === PROFILE_FORM_MODE.edit && canEdit === false && (
-          <GradientButton
-            type="primary"
-            style={{ marginRight: "auto" }}
-            onClick={toggleEditMode}
-          >
-            ویرایش
-          </GradientButton>
-        )}
-        {canEdit && (
-          <GradientButton
-            type="primary"
-            style={{ marginRight: "auto" }}
-            htmlType="submit"
-          >
-            ثبت
-          </GradientButton>
-        )}
-      </Flex>
-    </Form>
+          <Flex justify="flex-end" gap={16}>
+            {isEditing === false ? (
+              <GradientButton type="primary" onClick={toggleEditMode}>
+                ویرایش
+              </GradientButton>
+            ) : (
+              <Button onClick={toggleEditMode}>انصراف</Button>
+            )}
+            {isEditing && (
+              <GradientButton
+                type="primary"
+                htmlType="submit"
+                loading={dataLoading}
+              >
+                ثبت
+              </GradientButton>
+            )}
+          </Flex>
+        </Form>
+      </>
+    )
   );
 }
 

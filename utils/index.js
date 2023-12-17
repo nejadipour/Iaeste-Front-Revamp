@@ -19,7 +19,7 @@ export function fetchFieldsAndUniversities(client) {
       const universities = universitiesResponse?.data?.map(
         (university) => ({
           key: university.id,
-          value: university.id,
+          value: university.name,
           label: university.name,
         })
       );
