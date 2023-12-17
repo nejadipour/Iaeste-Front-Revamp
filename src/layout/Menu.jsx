@@ -39,7 +39,7 @@ const getItems = (mode) => [
     },
     {
         key: "weblog",
-        label: <MenuItem to={"/"} scroll={"blog"}>{"وبلاگ و اخبار"}</MenuItem>,
+        label: <MenuItem to={"/blogs"}>{"وبلاگ و اخبار"}</MenuItem>,
         icon: mode === "vertical" && <WeblogIcon/>
     },
     {
@@ -49,7 +49,7 @@ const getItems = (mode) => [
     },
     {
         key: "about-us",
-        label: <MenuItem to={"/"} scroll={"about-us"}>{"درباره ما"}</MenuItem>,
+        label: <MenuItem to={"/about-us"}>{"درباره ما"}</MenuItem>,
         icon: mode === "vertical" && <AboutUsIcon/>
     },
     {
