@@ -1,5 +1,5 @@
 import {Button, Checkbox, Flex, Form, Select, Typography} from "antd";
-import ProfileInfoForm from "../../components/ProfileInfoForm/index.jsx";
+import ProfileInfoForm from "../../forms/ProfileInfoForm/index.jsx";
 import React from "react";
 
 export default function RegisterExam() {

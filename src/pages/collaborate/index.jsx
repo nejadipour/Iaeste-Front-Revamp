@@ -17,7 +17,7 @@ const TabLabel = ({isActive, iconLight, iconDark, label}) => {
     const icon = isActive ? iconLight : iconDark;
     const labelStyle = {
         margin: 0,
-        padding: "0px 20px 0px 20px",
+        padding: "0px 80px 0px 80px",
         color: isActive ? "#ffffff" : null,
     };
 
@@ -108,9 +108,6 @@ export default function Collaborate() {
                         itemSelectedColor: "#ffffff",
                         colorBgContainer: "#0b3d59",
                     },
-                },
-                token: {
-
                 },
             }}
         >
