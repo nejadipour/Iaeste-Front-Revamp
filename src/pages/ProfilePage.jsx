@@ -14,6 +14,7 @@ import UploadIcon from "../../assets/icons/upload.svg?react";
 import {digitsEnToFa} from "@persian-tools/persian-tools";
 import GradientButton from "../components/Button/GradientButton.jsx";
 import BagIcon from "../components/icons/BagIcon.jsx";
+import InternshipTable from "../tables/InternshipTable.jsx";
 
 const cardStyle = {
     borderRadius: 16,
@@ -191,7 +192,7 @@ export default function ProfilePage() {
 
                     <div style={cardStyle}>
                         <Typography.Title level={4}>{"فرصت‌های کارآموزی درخواست‌داده‌شده"}</Typography.Title>
-
+                        <InternshipTable/>
                     </div>
                     <Link to={"/internship"}>
                         <GradientButton

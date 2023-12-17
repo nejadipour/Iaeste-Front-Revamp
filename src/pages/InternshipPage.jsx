@@ -4,6 +4,7 @@ import {ACOffersDescription, COBEOffersDescription, FCFSOffersDescription} from 
 import FCFSOffersIcon from "../../assets/icons/FCFSOffers.svg?react";
 import ACOffersIcon from "../../assets/icons/ACOffers.svg?react";
 import COBEOffersIcon from "../../assets/icons/COBEOffers.svg?react";
+import InternshipTable from "../tables/InternshipTable.jsx";
 
 export default function InternshipPage() {
     return (
@@ -40,6 +41,7 @@ export default function InternshipPage() {
             </Row>
 
             <Typography.Title level={3} style={{marginBottom: 40}}>{"لیست آفرهای کارآموزی"}</Typography.Title>
+            <InternshipTable/>
         </div>
     )
 }
