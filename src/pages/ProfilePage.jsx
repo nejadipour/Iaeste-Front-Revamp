@@ -1,11 +1,11 @@
-import {App, Avatar, Button, Col, ConfigProvider, Empty, Flex, Row, Typography} from "antd";
-import {useCallback, useEffect, useState} from "react";
+import {App, Avatar, Button, Col, ConfigProvider, Empty, Flex, Modal, Row, Typography, Upload} from "antd";
+import React, {useCallback, useEffect, useState} from "react";
 import {useClient} from "../contexts/client/ClientContext.jsx";
 import axios from "axios";
 import EventCard from "../components/Event/EventCard.jsx";
 import {useAuth} from "../contexts/authentication/AuthContext.jsx";
-import {EditFilled, MailFilled, PhoneFilled, SyncOutlined} from "@ant-design/icons";
-import {useNavigate} from "react-router-dom";
+import {CloudUploadOutlined, EditFilled, MailFilled, PhoneFilled, SyncOutlined} from "@ant-design/icons";
+import {Link, useNavigate} from "react-router-dom";
 import FieldIcon from "../components/icons/FieldIcon.jsx";
 import UniversityIcon from "../components/icons/UniversityIcon.jsx";
 import UserIcon from "../../assets/icons/user-fill.svg?react";
@@ -13,6 +13,7 @@ import CooperationIcon from "../../assets/icons/cooperation.svg?react";
 import UploadIcon from "../../assets/icons/upload.svg?react";
 import {digitsEnToFa} from "@persian-tools/persian-tools";
 import GradientButton from "../components/Button/GradientButton.jsx";
+import BagIcon from "../components/icons/BagIcon.jsx";
 
 const cardStyle = {
     borderRadius: 16,
@@ -34,6 +35,7 @@ export default function ProfilePage() {
     });
     const eventsBaseQuery = "/events/";
     const {notification} = App.useApp();
+    const [openResume, setOpenResume] = useState(false);
     const navigate = useNavigate();
 
     const fetchData = useCallback(() => {
@@ -70,32 +72,26 @@ export default function ProfilePage() {
     }, [fetched, loading, fetchData])
 
     return (
-        <Row gutter={[24, 24]}>
-            <Col md={5}>
-                <div style={{textAlign: "center"}}>
-                    <Avatar
-                        size={120}
-                        src={authUser?.profile_pic}
-                    />
-                </div>
+        <>
+            <Row gutter={[24, 24]}>
+                <Col md={5}>
+                    <div style={{textAlign: "center"}}>
+                        <Avatar
+                            size={120}
+                            src={authUser?.profile_pic}
+                        />
+                    </div>
 
-                <div style={{textAlign: "center", marginTop: -32, marginRight: 60}}>
-                    <Button style={{
-                        zIndex: 1,
-                        padding: "8px 8px 12px 8px",
-                        backgroundColor: "rgba(255, 255, 255, 0.8)",
-                        marginBottom: 24
-                    }}><EditFilled style={{display: "flex"}}/></Button>
-                </div>
+                    <div style={{textAlign: "center", marginTop: -32, marginRight: 60}}>
+                        <Button style={{
+                            zIndex: 1,
+                            padding: "8px 8px 12px 8px",
+                            backgroundColor: "rgba(255, 255, 255, 0.8)",
+                            marginBottom: 24
+                        }}><EditFilled style={{display: "flex"}}/></Button>
+                    </div>
 
-                <div style={cardStyle}>
-                    <ConfigProvider
-                        theme={{
-                            token: {
-                                lineHeight: 0.5
-                            }
-                        }}
-                    >
+                    <div style={cardStyle}>
                         <Typography.Paragraph>
                             <UserIcon style={iconsStyle}/>
                             {`${authUser?.first_name || ""} ${authUser?.last_name || ""}`}
@@ -120,60 +116,115 @@ export default function ProfilePage() {
                             <FieldIcon style={iconsStyle}/>
                             {authUser?.field}
                         </Typography.Paragraph>
-                    </ConfigProvider>
 
-                    <Flex justify={"end"} gap={12} style={{marginTop: 50}}>
-                        <Button icon={<SyncOutlined />}>{"تغییر رمز عبور"}</Button>
-                        <GradientButton>{"ویرایش"}</GradientButton>
-                    </Flex>
-                </div>
+                        <Flex justify={"end"} gap={12} wrap={"wrap"} style={{marginTop: 50}}>
+                            <Button icon={<SyncOutlined/>}>{"تغییر رمز عبور"}</Button>
+                            <GradientButton>{"ویرایش"}</GradientButton>
+                        </Flex>
+                    </div>
 
-                <Button size={"large"} icon={<UploadIcon/>} style={{width: "100%", textAlign: "right", marginBottom: 12}}>{"بارگذاری رزومه"}</Button>
-                <Button size={"large"} icon={<CooperationIcon/>} style={{width: "100%", textAlign: "right", marginBottom: 24}}>{"درخواست همکاری"}</Button>
+                    <Button onClick={() => setOpenResume(true)} size={"large"} icon={<UploadIcon/>}
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                width: "100%",
+                                textAlign: "right",
+                                marginBottom: 12
+                            }}>
+                        {"بارگذاری رزومه"}
+                    </Button>
 
-            </Col>
+                    <Link to={"/collaborate"}>
+                        <Button size={"large"} icon={<CooperationIcon/>}
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    width: "100%",
+                                    textAlign: "right",
+                                    marginBottom: 24
+                                }}>
+                            {"درخواست همکاری"}
+                        </Button>
+                    </Link>
 
-            <Col md={19}>
-                <Button
-                    type={"primary"}
-                    size={"large"}
-                    style={{
-                        width: "100%",
-                        height: 120,
-                        marginBottom: 24
-                    }}
+                </Col>
+
+                <Col md={19}>
+                    {/*<Button*/}
+                    {/*    type={"primary"}*/}
+                    {/*    size={"large"}*/}
+                    {/*    style={{*/}
+                    {/*        width: "100%",*/}
+                    {/*        height: 120,*/}
+                    {/*        marginBottom: 24*/}
+                    {/*    }}*/}
+                    {/*>*/}
+                    {/*    <Typography.Title level={2} style={{color: "white"}}>{"آزمون ۲۰۲۴"}</Typography.Title>*/}
+                    {/*</Button>*/}
+
+                    {/*<div style={cardStyle}>*/}
+                    {/*    <Typography.Title level={4}>{"رویداد‌های ثبت نامی"}</Typography.Title>*/}
+
+                    {/*    {data?.events?.length > 0 ?*/}
+                    {/*        <div style={{overflow: "hidden"}}>*/}
+                    {/*            <div style={{display: "flex", flexWrap: "nowrap", whiteSpace: "nowrap", overflowX: "auto"}}>*/}
+                    {/*                {*/}
+                    {/*                    data.events.map((event) => (*/}
+                    {/*                        <div key={event.id} style={{*/}
+                    {/*                            minWidth: 420,*/}
+                    {/*                            width: 420,*/}
+                    {/*                            padding: "0px 10px 20px 10px",*/}
+                    {/*                            whiteSpace: "normal"*/}
+                    {/*                        }}>*/}
+                    {/*                            <EventCard key={event.id} data={event}/>*/}
+                    {/*                        </div>*/}
+                    {/*                    ))*/}
+                    {/*                }*/}
+                    {/*            </div>*/}
+                    {/*        </div> :*/}
+                    {/*        <Empty*/}
+                    {/*            image={Empty.PRESENTED_IMAGE_SIMPLE}*/}
+                    {/*            description={"شما در هیچ رویدادی ثبت نام نکرده‌اید."}*/}
+                    {/*        />*/}
+                    {/*    }*/}
+                    {/*</div>*/}
+
+                    <div style={cardStyle}>
+                        <Typography.Title level={4}>{"فرصت‌های کارآموزی درخواست‌داده‌شده"}</Typography.Title>
+
+                    </div>
+                    <Link to={"/internship"}>
+                        <GradientButton
+                            icon={<BagIcon style={{height: "20px"}}/>}
+                            style={{
+                                display: "flex",
+                                marginTop: "1.5rem"
+                            }}
+                        >
+                            {"مشاهده فرصت‌های کارآموزی خارج از کشور"}
+                        </GradientButton>
+                    </Link>
+                </Col>
+            </Row>
+
+            <Modal
+                title={"‌"}
+                open={openResume}
+                onCancel={() => setOpenResume(false)}
+            >
+                <Upload.Dragger
+                    listType={"picture"}
+                    maxCount={1}
+                    accept={"image/*,.pdf"}
                 >
-                    <Typography.Title level={2} style={{color: "white"}}>{"آزمون ۲۰۲۴"}</Typography.Title>
-                </Button>
-
-                <div style={cardStyle}>
-                    <Typography.Title level={4}>{"رویداد‌های ثبت نامی"}</Typography.Title>
-
-                    {data?.events?.length > 0 ?
-                        <div style={{overflow: "hidden"}}>
-                            <div style={{display: "flex", flexWrap: "nowrap", whiteSpace: "nowrap", overflowX: "auto"}}>
-                                {
-                                    data.events.map((event) => (
-                                        <div key={event.id} style={{
-                                            minWidth: 420,
-                                            width: 420,
-                                            padding: "0px 10px 20px 10px",
-                                            whiteSpace: "normal"
-                                        }}>
-                                            <EventCard key={event.id} data={event}/>
-                                        </div>
-                                    ))
-                                }
-                            </div>
-                        </div> :
-                        <Empty
-                            image={Empty.PRESENTED_IMAGE_SIMPLE}
-                            description={"شما در هیچ رویدادی ثبت نام نکرده‌اید."}
-                        />
-                    }
-                </div>
-
-            </Col>
-        </Row>
+                    <Flex gap={10} vertical style={{textAlign: "center"}}>
+                        <div style={{textAlign: "center"}}>
+                            <CloudUploadOutlined/>
+                        </div>
+                        <Typography.Text>فایل مورد نظر را کشیده یا انتخاب کنید</Typography.Text>
+                    </Flex>
+                </Upload.Dragger>
+            </Modal>
+        </>
     )
 }
