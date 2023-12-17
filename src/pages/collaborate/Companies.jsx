@@ -1,17 +1,31 @@
-import { Typography, Form, Input, Row, Col, Button } from "antd";
+import { Typography, Form, Input, Row, Col, Button, App } from "antd";
 import CollaboratorsCompanies from "../../components/landing/items/CollaboratorsCompanies";
 import { handleCollaborationReq } from "../../../utils";
 import { COLLABORATION_TYPES } from "../../constants/CollaborateConstants";
 import { useClient } from "../../contexts/client/ClientContext";
+import { registerRules } from "../../validations/RegisterFormValidation.jsx";
+import { useState } from "react";
 
 export default function CompaniesTab({ data }) {
-  const client = useClient();
+  const { client } = useClient();
+  const [requestLoading, setRequestLoading] = useState(false);
+  const { notification } = App.useApp();
   function handleSubmit(form) {
-    handleCollaborationReq(form, COLLABORATION_TYPES.university, client)
-      .then((res) => console.log(res))
-      .catch((error) => {
-        console.log(error);
-      });
+    setRequestLoading(true);
+    handleCollaborationReq(form, COLLABORATION_TYPES.company, client)
+      .then(() =>
+        notification.success({
+          message: "درخواست شما با موفقیت ثبت شد.",
+          placement: 'bottomRight'
+        })
+      )
+      .catch(() => {
+        notification.error({
+          message: "خطایی رخ داد",
+          placement: 'bottomRight'
+        });
+      })
+      .finally(() => setRequestLoading(false));
   }
 
   return (
@@ -60,7 +74,7 @@ export default function CompaniesTab({ data }) {
                 name="email"
                 label="آدرس ایمیل"
                 required
-                rules={[{ required: true, message: "آدرس ایمیل الزامی است" }]}
+                rules={registerRules.email}
               >
                 <Input size={"large"} />
               </Form.Item>
@@ -71,7 +85,7 @@ export default function CompaniesTab({ data }) {
                 name="phone"
                 label="شماره تماس"
                 required
-                rules={[{ required: true, message: "شماره تماس الزامی است" }]}
+                rules={registerRules.phone}
               >
                 <Input size={"large"} placeholder="" />
               </Form.Item>
@@ -84,7 +98,9 @@ export default function CompaniesTab({ data }) {
                 name="company"
                 label="شرکت درخواست دهنده"
                 required
-                // rules={registerRules.university}
+                rules={[
+                  { required: true, message: "شرکت درخواست دهنده الزامی است." },
+                ]}
               >
                 <Input size={"large"} placeholder="" />
               </Form.Item>
@@ -95,7 +111,9 @@ export default function CompaniesTab({ data }) {
                 name="city"
                 label="شهر محل شرکت"
                 required
-                // rules={registerRules.field}
+                rules={[
+                  { required: true, message: "شهر محل شرکت الزامی است." },
+                ]}
               >
                 <Input size={"large"} placeholder="" />
               </Form.Item>
@@ -108,14 +126,19 @@ export default function CompaniesTab({ data }) {
                 name="applier_position"
                 label="سمت شغلی درخواست دهنده"
                 required
-                // rules={registerRules.university}
+                rules={[{ required: true, message: "سمت شغلی الزامی است." }]}
               >
                 <Input size={"large"} placeholder="" />
               </Form.Item>
             </Col>
           </Row>
 
-          <Form.Item required label="متن درخواست همکاری">
+          <Form.Item
+            required
+            name='message'
+            label="متن درخواست همکاری"
+            rules={[{ required: true, message: "متن درخواست همکاری الزامی است." }]}
+          >
             <Input.TextArea size={"large"} rows={5} />
           </Form.Item>
 
@@ -123,6 +146,8 @@ export default function CompaniesTab({ data }) {
             size="large"
             type="primary"
             style={{ margin: "0 auto", display: "block" }}
+            htmlType="submit"
+            loading={requestLoading}
           >
             ثبت درخواست همکاری
           </Button>

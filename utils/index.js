@@ -30,11 +30,12 @@ export function fetchFieldsAndUniversities(client) {
 
 
 export function handleCollaborationReq(form, type, client) {
-  console.log(client, form);
   const formData = new FormData()
-  const fullName = form.first_name + ' ' + form.las_name
-  formData.append('fullName', fullName)
+  const fullName = form.first_name + ' ' + form.last_name
+  formData.append('fullname', fullName)
   formData.append('type', type)
+  delete form.first_name
+  delete form.last_name
   for (const key in form) {
     if (Object.hasOwnProperty.call(form, key)) {
       const value = form[key];

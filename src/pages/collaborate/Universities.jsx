@@ -1,17 +1,29 @@
-import { Typography, Form, Input, Row, Col, Button } from "antd";
+import { Typography, Form, Input, Row, Col, Button, message, App } from "antd";
 import CollaboratorsUniversities from "../../components/landing/items/CollaboratorsUniversities";
 import { handleCollaborationReq } from "../../../utils";
 import { COLLABORATION_TYPES } from "../../constants/CollaborateConstants";
 import { useClient } from "../../contexts/client/ClientContext";
+import { useState } from "react";
+import { registerRules } from "../../validations/RegisterFormValidation.jsx";
 
 export default function UniversitiesTab({ data }) {
-  const client = useClient();
+  const { client } = useClient();
+  const [requestLoading, setRequestLoading] = useState(false);
+  const { notification } = App.useApp();
   function handleSubmit(form) {
+    setRequestLoading(true);
     handleCollaborationReq(form, COLLABORATION_TYPES.university, client)
-      .then((res) => console.log(res))
-      .catch((error) => {
-        console.log(error);
-      });
+      .then(() =>
+        notification.success({
+          message: "درخواست شما با موفقیت ثبت شد.",
+        })
+      )
+      .catch(() => {
+        notification.error({
+          message: "خطایی رخ داد",
+        });
+      })
+      .finally(() => setRequestLoading(false));
   }
 
   return (
@@ -40,7 +52,7 @@ export default function UniversitiesTab({ data }) {
                 required
                 rules={[{ required: true, message: "نام الزامی است" }]}
               >
-                <Input size={"large"} placeholder="مهدخت" />
+                <Input size={"large"} />
               </Form.Item>
             </Col>
 
@@ -51,7 +63,7 @@ export default function UniversitiesTab({ data }) {
                 required
                 rules={[{ required: true, message: "نام خانوادگی الزامی است" }]}
               >
-                <Input size={"large"} placeholder="شاه مرادی" />
+                <Input size={"large"} />
               </Form.Item>
             </Col>
           </Row>
@@ -62,12 +74,9 @@ export default function UniversitiesTab({ data }) {
                 name="email"
                 label="آدرس ایمیل"
                 required
-                rules={[{ required: true, message: "آدرس ایمیل الزامی است" }]}
+                rules={registerRules.email}
               >
-                <Input
-                  size={"large"}
-                  placeholder="mahdokht.shahmoradi@gamil.com"
-                />
+                <Input size={"large"} />
               </Form.Item>
             </Col>
 
@@ -76,7 +85,7 @@ export default function UniversitiesTab({ data }) {
                 name="phone"
                 label="شماره تماس"
                 required
-                rules={[{ required: true, message: "شماره تماس الزامی است" }]}
+                rules={registerRules.phone}
               >
                 <Input size={"large"} placeholder="" />
               </Form.Item>
@@ -89,7 +98,7 @@ export default function UniversitiesTab({ data }) {
                 name="university"
                 label="دانشگاه درخواست دهنده"
                 required
-                // rules={registerRules.university}
+                rules={[{ required: true, message: "دانشگاه الزامی است." }]}
               >
                 <Input size={"large"} placeholder="" />
               </Form.Item>
@@ -97,10 +106,12 @@ export default function UniversitiesTab({ data }) {
 
             <Col xs={24} md={12}>
               <Form.Item
-                name="field"
+                name="university_city"
                 label="شهر محل دانشگاه"
                 required
-                // rules={registerRules.field}
+                rules={[
+                  { required: true, message: "شهر محل دانشگاه الزامی است." },
+                ]}
               >
                 <Input size={"large"} placeholder="" />
               </Form.Item>
@@ -113,14 +124,21 @@ export default function UniversitiesTab({ data }) {
                 name="applier_position"
                 label="سمت شغلی درخواست دهنده"
                 required
-                // rules={registerRules.university}
+                rules={[{ required: true, message: "سمت شغلی الزامی است." }]}
               >
                 <Input size={"large"} placeholder="" />
               </Form.Item>
             </Col>
           </Row>
 
-          <Form.Item name="message" required label="متن درخواست همکاری">
+          <Form.Item
+            name="message"
+            required
+            label="متن درخواست همکاری"
+            rules={[
+              { required: true, message: "متن درخواست همکاری الزامی است." },
+            ]}
+          >
             <Input.TextArea size={"large"} rows={5} />
           </Form.Item>
 
@@ -129,6 +147,7 @@ export default function UniversitiesTab({ data }) {
             type="primary"
             style={{ margin: "0 auto", display: "block" }}
             htmlType="submit"
+            loading={requestLoading}
           >
             ثبت درخواست همکاری
           </Button>

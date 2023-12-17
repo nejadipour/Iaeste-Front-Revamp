@@ -7,6 +7,8 @@ import {
   Button,
   Upload,
   Typography,
+  App,
+  Flex,
 } from "antd";
 import DescriptionCard from "../../components/Card/DescriptionCard.jsx";
 import {
@@ -23,51 +25,62 @@ import { useProfileOptions } from "../../../utils/hooks/useProfileOptions.js";
 import { handleCollaborationReq } from "../../../utils/index.js";
 import { useClient } from "../../contexts/client/ClientContext.jsx";
 import { useAuth } from "../../contexts/authentication/AuthContext";
-import { useForm } from "antd/es/form/Form.js";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function StudentsTab() {
+  const [resumeFile, setResumeFile] = useState([]);
   const { fields, universities } = useProfileOptions();
   const { authUser } = useAuth();
   const { client } = useClient();
-  const [form] = useForm();
+  const [requestLoading, setRequestLoading] = useState(false);
+  const { notification } = App.useApp();
+  const navigate = useNavigate();
   function handleSubmit(form) {
-    console.log(form);
+    setRequestLoading(true);
     handleCollaborationReq(
-      { ...form, resume: form.resume[0].originFileObj },
+      { ...form, resumeFile: form.resumeFile[0] },
       COLLABORATION_TYPES.student,
       client
     )
-      .then((res) => console.log(res))
-      .catch((error) => {
-        console.log(error);
-      });
+      .then(() =>
+        notification.success({
+          message: "درخواست شما با موفقیت ثبت شد.",
+        })
+      )
+      .catch(() => {
+        notification.error({
+          message: "خطایی رخ داد",
+        });
+      })
+      .finally(() => setRequestLoading(false));
   }
 
   const normFile = (e) => {
-    console.log(e);
-    if (Array.isArray(e)) {
-      return e;
-    }
-    return e?.fileList;
+    return resumeFile;
   };
 
-  function handleResumeSize(file) {
-    console.log(file);
-    const size = file.size / (1024 * 1024);
-    console.log(size);
-    if (size > 1) {
-      console.log('size is big');
-      form.setFields([
-        {
-          name: "resume",
-          errors: ["حجم فایل انتخاب شده بیشتر از 1 مگابایت است."],
-        },{
-          name: 'first_name',
-          errors: ['error']
-        }
-      ]);
-    }
+  function handleBeforeUpload(file) {
+    setResumeFile([file]);
     return false;
+  }
+
+  function validateResume() {
+    return {
+      validator(_, value) {
+        if (value) {
+          const file = value[0];
+          const size = file.size / (1024 * 1024);
+          if (!/\.(pdf)$/i.test(file.name)) {
+            return Promise.reject("لطفا فایل pdf آپلود کنید");
+          }
+          if (size > 10) {
+            return Promise.reject("حجم فایل بیشتر از 10 مگابایت است");
+          }
+        }
+        return Promise.resolve();
+      },
+    };
   }
 
   return (
@@ -111,12 +124,11 @@ export default function StudentsTab() {
         <Typography.Title level={5} style={{ margin: 0, marginBottom: 25 }}>
           مشخصات درخواست دهنده
         </Typography.Title>
-        {authUser && (
+        {authUser ? (
           <Form
             layout="vertical"
             onFinish={handleSubmit}
             initialValues={authUser}
-            form={form}
           >
             <Row gutter={64}>
               <Col xs={24} md={12}>
@@ -210,7 +222,7 @@ export default function StudentsTab() {
               </Col>
             </Row>
             <Form.Item
-              name="collaborationFields"
+              name="cooperationFields"
               required
               label="در کدام بخش ها قصد همکاری دارید؟"
               rules={[
@@ -233,27 +245,55 @@ export default function StudentsTab() {
               />
             </Form.Item>
 
-            <Form.Item
-              required
-              name="resume"
-              valuePropName="fileList"
-              getValueFromEvent={normFile}
-              rules={[{ required: true, message: "رزومه الزامی است" }]}
-            >
-              <Upload maxCount={1} beforeUpload={handleResumeSize}>
-                <Button size={"large"}>بارگذاری رزومه</Button>
-              </Upload>
-            </Form.Item>
+            <Flex align="center" gap={16}>
+              <Form.Item
+                required
+                name="resumeFile"
+                valuePropName="fileList"
+                getValueFromEvent={normFile}
+                rules={[
+                  { required: true, message: "رزومه الزامی است" },
+                  validateResume(),
+                ]}
+              >
+                <Upload
+                  accept=".pdf"
+                  maxCount={1}
+                  beforeUpload={handleBeforeUpload}
+                  showUploadList={{ showRemoveIcon: false }}
+                  onRemove={false}
+                >
+                  <Button size={"large"}>بارگذاری رزومه</Button>
+                </Upload>
+              </Form.Item>
+              <Typography.Link
+                // href={authUser.resume_file}
+                href="https://iaeste.ir/media/career/resume-test_klGNkVu.pdf"
+                target="_blank"
+              >
+                رزومه
+              </Typography.Link>
+            </Flex>
 
             <Button
               size="large"
               type="primary"
               htmlType="submit"
+              loading={requestLoading}
               style={{ margin: "0 auto", display: "block" }}
             >
               درخواست همکاری
             </Button>
           </Form>
+        ) : (
+          <Flex vertical gap={16}>
+            <Typography.Text>
+              برای ثبت درخواست همکاری ابتدا وارد شوید.
+            </Typography.Text>
+            <Button type="primary" onClick={() => navigate("/auth")} style={{alignSelf: 'center', width: 200}}>
+              ورود
+            </Button>
+          </Flex>
         )}
       </div>
     </>
