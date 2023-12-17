@@ -8,7 +8,7 @@ const socialMediaIconStyle = {fontSize: 25, opacity: "50%", color: "#ffffff"}
 const footerItemTextStyle = {color: "#ffffff", opacity: "50%", transition: 'opacity 0.3s ease-in-out'}
 
 const FooterItem = ({to, scroll, children}) => (
-    <Flex vertical style={{textAlign: "center"}}>
+    <Flex vertical>
         <MenuItem
             onMouseOver={(e) => {
                 e.target.style.opacity = '1';
