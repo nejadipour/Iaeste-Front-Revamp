@@ -24,8 +24,8 @@ export default function AboutUsPage() {
                 {"فعالیت‌های کمیته آیسته ایران به چند بخش تقسیم‌بندی می‌گردد دانشجویان داخلی و خارجی، دانشگاه‌ها و شرکت‌ها:"}
             </Typography.Title>
 
-            <Row justify={"center"} gutter={[24, 24]} style={{marginBottom: "4rem"}}>
-                <Col xs={8}>
+            <Row justify={"start"} gutter={[24, 24]} style={{marginBottom: "4rem"}}>
+                <Col xs={24} lg={12} xl={8}>
                     <DescriptionCard
                         title={"Incoming Students"}
                         src={"/assets/images/incoming_students_cover.jpg"}
@@ -35,7 +35,7 @@ export default function AboutUsPage() {
                     />
                 </Col>
 
-                <Col xs={8}>
+                <Col xs={24} lg={12} xl={8}>
                     <DescriptionCard
                         title={"Outgoing Students"}
                         src={"/assets/images/outgoing_students_cover.JPG"}
@@ -45,7 +45,7 @@ export default function AboutUsPage() {
                     />
                 </Col>
 
-                <Col xs={8}>
+                <Col xs={24} lg={12} xl={8}>
                     <DescriptionCard
                         title={"Universities and Companies"}
                         src={"/assets/images/IT_committee.jpg"}

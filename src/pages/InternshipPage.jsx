@@ -11,8 +11,8 @@ export default function InternshipPage() {
         <div>
             <Typography.Title level={3} style={{marginBottom: 40}}>{"انواع آفرهای کارآموزی"}</Typography.Title>
 
-            <Row justify={"center"} gutter={[24, 24]} style={{marginBottom: 80}}>
-                <Col xs={8}>
+            <Row justify={"start"} gutter={[24, 24]} style={{marginBottom: 80}}>
+                <Col xs={24} lg={12} xl={8}>
                     <DescriptionCard
                         title={"AC Offers"}
                         src={"/assets/images/ac_offers.jpg"}
@@ -21,7 +21,7 @@ export default function InternshipPage() {
                     />
                 </Col>
 
-                <Col xs={8}>
+                <Col xs={24} lg={12} xl={8}>
                     <DescriptionCard
                         title={"COBE Offers"}
                         src={"/assets/images/cobe_offers.jpg"}
@@ -30,7 +30,7 @@ export default function InternshipPage() {
                     />
                 </Col>
 
-                <Col xs={8}>
+                <Col xs={24} lg={12} xl={8}>
                     <DescriptionCard
                         title={"FCFS Offers"}
                         src={"/assets/images/fcfs_offers.jpg"}

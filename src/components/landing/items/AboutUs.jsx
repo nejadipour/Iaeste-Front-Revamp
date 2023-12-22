@@ -17,8 +17,8 @@ export default function AboutUs({hideMore, primaryTexts, secondaryTexts}) {
                 }
             }}
         >
-            <Row gutter={[70, 24]} justify={"space-between"} align={"top"}>
-                <Col md={14} xs={24}>
+            <Row gutter={[10, 24]} justify={"space-between"} align={"top"}>
+                <Col lg={14} xs={24}>
 
                     {primaryTexts?.map((text, index) => (
                         <Typography.Paragraph style={{textAlign: "justify", marginBottom: "3px"}} key={index}>
@@ -28,8 +28,8 @@ export default function AboutUs({hideMore, primaryTexts, secondaryTexts}) {
 
                 </Col>
 
-                <Col md={10} xs={24}>
-                    <div style={{textAlign: "left"}}>
+                <Col lg={10} xs={24}>
+                    <div style={{textAlign: "center"}}>
                         <Image
                             alt={""}
                             src={"/assets/images/work_exp_discover.png"}

@@ -86,8 +86,8 @@ export default function StudentsTab() {
 
     return (
         <>
-            <Row justify={"center"} gutter={[24, 24]}>
-                <Col xs={8}>
+            <Row justify={"start"} gutter={[24, 24]}>
+                <Col xs={24} lg={12} xxl={8}>
                     <DescriptionCard
                         title={"Local Committee"}
                         src={"/assets/images/local_committee.jpg"}
@@ -96,7 +96,7 @@ export default function StudentsTab() {
                     />
                 </Col>
 
-                <Col xs={8}>
+                <Col xs={24} lg={12} xxl={8}>
                     <DescriptionCard
                         title={"Marketing & Graphic Design Committee"}
                         src={"/assets/images/marketing_committee.jpg"}
@@ -105,7 +105,7 @@ export default function StudentsTab() {
                     />
                 </Col>
 
-                <Col xs={8}>
+                <Col xs={24} lg={12} xxl={8}>
                     <DescriptionCard
                         title={"IT Committee"}
                         src={"/assets/images/IT_committee.jpg"}
