@@ -36,6 +36,7 @@ const EventPage = () => {
                 <>
                     <section>
                         <Flex
+                            wrap={"wrap"}
                             justify="space-between"
                             align="flex-start"
                             style={{marginTop: 27}}
@@ -60,10 +61,11 @@ const EventPage = () => {
                                 <Row
                                     icon={<TimeIcon fill="var(--color-primary)"/>}
                                     title="هزینه ثبت نام"
-                                    value={data.registrationEndDate}
+                                    value={data.eventDefaultAmount ? `${data.eventDefaultAmount} تومان` : "رایگان"}
                                 />
                             </div>
-                            <Flex vertical align="flex-end">
+
+                            <Flex vertical align="flex-end" justify={"end"} flex={"fit-content"}>
                                 <Flex gap={16}>
                                     {data.status === EVENT_STATUS.attended && (
                                         <FilledTag className="event-page-tag">برگزار شد</FilledTag>
@@ -103,8 +105,10 @@ const EventPage = () => {
                                     </Typography.Link>
                                 </Flex>
                             </Flex>
+
                         </Flex>
                     </section>
+
                     <section>
                         <Flex justify="center" align="center" vertical gap={8}>
                             {handleActionBtn(data)}
@@ -170,7 +174,7 @@ export default EventPage;
 function handleActionBtn(data) {
     if (!data.userIsRegistered && data.status === EVENT_STATUS.register_open) {
         return (
-            <Link to="/events/register">
+            <Link to={data.external_registration_link}>
                 <Button
                     type="primary"
                     style={{margin: "0 auto", textAlign: "center"}}
