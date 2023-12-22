@@ -16,9 +16,10 @@ export default function ExperienceInside({experiences}) {
         <Swiper
             style={{padding: "5px", direction: "ltr", paddingBottom: "50px"}}
             onSwiper={setSwiper}
-            effect={'coverflow'}
+            effect={window.innerWidth < 1600 ? 'slide' : 'coverflow'}
             centeredSlides={true}
-            slidesPerView={2}
+            slidesPerView={window.innerWidth < 1600 ? 1 : 2}
+            spaceBetween={window.innerWidth < 1600 ? 50 : null}
             coverflowEffect={{
                 rotate: 0,
                 stretch: 257,
@@ -34,7 +35,7 @@ export default function ExperienceInside({experiences}) {
             }}
             loop={true}
             roundLengths={true}
-            modules={[EffectCoverflow, Pagination, Autoplay]}
+            modules={window.innerWidth < 1600 ? [Autoplay] : [EffectCoverflow, Pagination, Autoplay]}
         >
             {experiences?.map((exp) => (
                 <SwiperSlide key={exp.id}>

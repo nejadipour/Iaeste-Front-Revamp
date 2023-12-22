@@ -18,7 +18,7 @@ export default function ExperiencesOutside(props) {
 
     return (
         <Row>
-            <Col xs={24} md={12} style={{marginTop: "140px"}}>
+            <Col xs={24} xxl={12} style={{marginTop: window.innerWidth >= 1600 ? 140 : 0}}>
                 <Swiper
                     style={{borderRadius: "15px", boxShadow: '0 0 8px rgba(0, 0, 0, 0.2)'}}
                     spaceBetween={50}
@@ -39,6 +39,12 @@ export default function ExperiencesOutside(props) {
                         </SwiperSlide>
                     ))}
                 </Swiper>
+
+                {window.innerWidth < 1600 &&
+                    <div style={{textAlign: "center", marginTop: "-15px"}}>
+                        <Navigation style={{zIndex: 1}} swiper={swiper}/>
+                    </div>
+                }
             </Col>
 
             <Col style={{position: "absolute"}} xs={0} xxl={{span: 17, offset: 4}}>

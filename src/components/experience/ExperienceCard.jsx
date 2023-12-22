@@ -25,10 +25,18 @@ export default function ExperienceCard(props) {
                     lineHeight: 1.8,
                     fontSize: 16,
                     colorSplit: "#0b3d59",
+                    fontFamily: direction === "ltr" ? "IranSansEn" : "IranSans"
                 }
             }}
         >
-            <Card style={{minHeight: 450, borderRadius: "15px", boxShadow: '0 0 8px rgba(0, 0, 0, 0.2)'}}>
+            <Card
+                bordered={false}
+                style={{
+                    minHeight: 450,
+                    borderRadius: "15px",
+                    boxShadow: direction === "rtl" ? '0 0 8px rgba(0, 0, 0, 0)' : '0 0 8px rgba(0, 0, 0, 0.2)'
+                }}
+            >
                 <Row align={"top"} justify={"space-between"}>
                     <Col>
                         <Avatar src={experience.image}/>
@@ -41,43 +49,39 @@ export default function ExperienceCard(props) {
                 </Row>
 
                 <Row>
-                    <Col xs={7}>
+                    <Col xs={24} md={7}>
                         <Typography.Title level={4}>{experience.fullname}</Typography.Title>
 
-                        <ConfigProvider
-                            theme={{
-                                token: {
-                                    lineHeight: 0.5
-                                }
-                            }}
-                        >
-                            <Typography.Paragraph>
-                                <LocationIcon style={iconsStyle}/>
-                                {experience.country}
-                            </Typography.Paragraph>
+                        <Typography.Paragraph style={{marginBottom: 0}}>
+                            <LocationIcon style={iconsStyle}/>
+                            {experience.country}
+                        </Typography.Paragraph>
 
-                            <Typography.Paragraph>
-                                <FieldIcon style={iconsStyle}/>
-                                {experience.field}
-                            </Typography.Paragraph>
+                        <Typography.Paragraph style={{marginBottom: 0}}>
+                            <FieldIcon style={iconsStyle}/>
+                            {experience.field}
+                        </Typography.Paragraph>
 
-                            <Typography.Paragraph>
-                                <UniversityIcon style={iconsStyle}/>
-                                {experience.university}
-                            </Typography.Paragraph>
+                        <Typography.Paragraph style={{marginBottom: 0}}>
+                            <UniversityIcon style={iconsStyle}/>
+                            {experience.university}
+                        </Typography.Paragraph>
 
-                            <Typography.Paragraph>
-                                <CalendarIcon style={iconsStyle}/>
-                                {direction === "rtl" ? `کارآموزی در ${experience.transfer_season}` : `internship in ${experience.transfer_season}`}
-                            </Typography.Paragraph>
-                        </ConfigProvider>
+                        <Typography.Paragraph style={{marginBottom: 0}}>
+                            <CalendarIcon style={iconsStyle}/>
+                            {direction === "rtl" ? `کارآموزی در ${experience.transfer_season}` : `internship in ${experience.transfer_season}`}
+                        </Typography.Paragraph>
                     </Col>
 
-                    <Col xs={1} style={{marginTop: "2rem", marginBottom: "1rem"}}>
+                    <Col xs={24} md={0}>
+                        <Divider type={"horizontal"} style={{marginBottom: "-1rem"}}/>
+                    </Col>
+
+                    <Col xs={0} md={1} style={{marginTop: "2rem", marginBottom: "1rem"}}>
                         <Divider type={"vertical"} style={{height: "100%"}}/>
                     </Col>
 
-                    <Col xs={16} style={{marginTop: "2rem"}}>
+                    <Col xs={24} md={16} style={{marginTop: "2rem"}}>
                         <Typography.Paragraph
                             style={{textAlign: "justify"}}
                             ellipsis={{
