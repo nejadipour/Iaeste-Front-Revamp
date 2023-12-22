@@ -49,7 +49,7 @@ export default function FlexCollapseItem(props) {
         <Card
             style={{
                 backgroundImage: getBackgroundImage(),
-                minHeight: mode === "vertical" ? 230 : null,
+                minHeight: mode === "vertical" ? 250 : null,
                 width: mode === "vertical" ? collapsed ? 100 : 500 : null,
                 height: mode === "horizontal" ? collapsed ? 100 : 300 : null,
                 transition: "0.3s ease-in-out",
