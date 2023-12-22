@@ -46,6 +46,9 @@ export default function InternshipTable() {
         <Table
             columns={columns}
             dataSource={dataSource}
+            scroll={{
+                x: 1000,
+            }}
         />
     )
 }

@@ -75,7 +75,7 @@ export default function ProfilePage() {
     return (
         <>
             <Row gutter={[24, 24]}>
-                <Col md={5}>
+                <Col xs={24} xxl={5}>
                     <div style={{textAlign: "center"}}>
                         <Avatar
                             size={120}
@@ -124,33 +124,39 @@ export default function ProfilePage() {
                         </Flex>
                     </div>
 
-                    <Button onClick={() => setOpenResume(true)} size={"large"} icon={<UploadIcon/>}
-                            style={{
-                                display: "flex",
-                                alignItems: "center",
-                                width: "100%",
-                                textAlign: "right",
-                                marginBottom: 12
-                            }}>
-                        {"بارگذاری رزومه"}
-                    </Button>
+                    <Row gutter={[20, 8]}>
+                        <Col xs={12} xxl={24}>
+                            <Button onClick={() => setOpenResume(true)} size={"large"} icon={<UploadIcon/>}
+                                    style={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        width: "100%",
+                                        textAlign: "right",
+                                        marginBottom: 12
+                                    }}>
+                                {"بارگذاری رزومه"}
+                            </Button>
+                        </Col>
 
-                    <Link to={"/collaborate"}>
-                        <Button size={"large"} icon={<CooperationIcon/>}
-                                style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    width: "100%",
-                                    textAlign: "right",
-                                    marginBottom: 24
-                                }}>
-                            {"درخواست همکاری"}
-                        </Button>
-                    </Link>
+                        <Col xs={12} xxl={24}>
+                            <Link to={"/collaborate"}>
+                                <Button size={"large"} icon={<CooperationIcon/>}
+                                        style={{
+                                            display: "flex",
+                                            alignItems: "center",
+                                            width: "100%",
+                                            textAlign: "right",
+                                            marginBottom: 24
+                                        }}>
+                                    {"درخواست همکاری"}
+                                </Button>
+                            </Link>
+                        </Col>
+                    </Row>
 
                 </Col>
 
-                <Col md={19}>
+                <Col xs={24} xxl={19}>
                     {/*<Button*/}
                     {/*    type={"primary"}*/}
                     {/*    size={"large"}*/}
@@ -194,17 +200,20 @@ export default function ProfilePage() {
                         <Typography.Title level={4}>{"فرصت‌های کارآموزی درخواست‌داده‌شده"}</Typography.Title>
                         <InternshipTable/>
                     </div>
-                    <Link to={"/internship"}>
-                        <GradientButton
-                            icon={<BagIcon style={{height: "20px"}}/>}
-                            style={{
-                                display: "flex",
-                                marginTop: "1.5rem"
-                            }}
-                        >
-                            {"مشاهده فرصت‌های کارآموزی خارج از کشور"}
-                        </GradientButton>
-                    </Link>
+
+                    <Flex>
+                        <Link to={"/internship"}>
+                            <GradientButton
+                                icon={<BagIcon style={{height: "20px"}}/>}
+                                style={{
+                                    display: "flex",
+                                    marginTop: "1.5rem"
+                                }}
+                            >
+                                {"مشاهده فرصت‌های کارآموزی خارج از کشور"}
+                            </GradientButton>
+                        </Link>
+                    </Flex>
                 </Col>
             </Row>
 
