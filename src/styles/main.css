@@ -4,8 +4,13 @@
   --color-gray: #707070;
 }
 @font-face {
-  font-family: "IRANSans";
+  font-family: "IRANSansEn";
   src: local("IRANSans"), url("/assets/fonts/IRANSans.woff2");
+}
+
+@font-face {
+  font-family: "IRANSans";
+  src: local("IRANSans"), url("/assets/fonts/IRANSansFaNum.woff2");
 }
 
 body {

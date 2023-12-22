@@ -14,6 +14,7 @@ function App() {
                 token: {
                     fontFamily: "IRANSans",
                     colorPrimary: "#0b3d59",
+                    fontSize: 16,
                     colorLink: "#0094cd",
                     controlOutline: "#0b3d59",
                     colorTextHeading: "#0b3d59",
