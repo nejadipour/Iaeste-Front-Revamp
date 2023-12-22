@@ -9,7 +9,7 @@ import Step5Icon from "../../icons/steps/Step5Icon.jsx";
 import Step6Icon from "../../icons/steps/Step6Icon.jsx";
 import Step7Icon from "../../icons/steps/Step7Icon.jsx";
 import Step8Icon from "../../icons/steps/Step8Icon.jsx";
-import {ConfigProvider} from "antd";
+import {ConfigProvider, Flex} from "antd";
 import GradientButton from "../../Button/GradientButton.jsx";
 import BagIcon from "../../icons/BagIcon.jsx";
 import {Link} from "react-router-dom";
@@ -80,12 +80,14 @@ export default function Steps() {
             <FlexCollapse items={items} mode={"vertical"} trigger={"hover"} defaultActiveKey={1}
                           autoOpenDefaultActiveKey/>
 
-            <Link to={"/internship"}>
-                <GradientButton icon={<BagIcon style={{height: "20px"}}/>} style={{
-                    display: "flex",
-                    marginTop: "1.5rem"
-                }}>{"مشاهده فرصت‌های کارآموزی خارج از کشور"}</GradientButton>
-            </Link>
+            <Flex>
+                <Link to={"/internship"}>
+                    <GradientButton icon={<BagIcon style={{height: "20px"}}/>} style={{
+                        display: "flex",
+                        marginTop: "1.5rem"
+                    }}>{"مشاهده فرصت‌های کارآموزی خارج از کشور"}</GradientButton>
+                </Link>
+            </Flex>
         </ConfigProvider>
     )
 }
