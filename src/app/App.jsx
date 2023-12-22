@@ -13,7 +13,6 @@ function App() {
             theme={{
                 token: {
                     fontFamily: "IRANSans",
-                    fontSize: 14,
                     colorPrimary: "#0b3d59",
                     colorLink: "#0094cd",
                     controlOutline: "#0b3d59",

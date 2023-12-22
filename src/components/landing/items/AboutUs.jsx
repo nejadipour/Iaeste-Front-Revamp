@@ -8,7 +8,7 @@ export default function AboutUs({hideMore, primaryTexts, secondaryTexts}) {
         <ConfigProvider
             theme={{
                 token: {
-                    fontSize: 18,
+                    fontSize: "1.1rem",
                 },
                 components: {
                     Typography: {
@@ -17,7 +17,7 @@ export default function AboutUs({hideMore, primaryTexts, secondaryTexts}) {
                 }
             }}
         >
-            <Row gutter={[70, 24]} justify={"space-between"} align={"middle"}>
+            <Row gutter={[70, 24]} justify={"space-between"} align={"top"}>
                 <Col md={14} xs={24}>
 
                     {primaryTexts?.map((text, index) => (
@@ -41,7 +41,7 @@ export default function AboutUs({hideMore, primaryTexts, secondaryTexts}) {
                 {!hideMore &&
                     <Col>
                         <Link to={"/about-us"}>
-                            <GradientButton style={{display: "flex", fontSize: 16}}>{"بیشتر بخوانید"}<DoubleLeftOutlined
+                            <GradientButton style={{display: "flex", fontSize: 14}}>{"بیشتر بخوانید"}<DoubleLeftOutlined
                                 style={{marginTop: 3}}/></GradientButton>
                         </Link>
                     </Col>

@@ -1,4 +1,3 @@
-import {Element} from "react-scroll";
 import {ConfigProvider, Typography} from "antd";
 
 export default function LandingItem(props) {
