@@ -8,7 +8,8 @@ import {Autoplay, FreeMode} from "swiper/modules";
 export default function CollaboratorsCompanies({companies}) {
     return (
         <Swiper
-            slidesPerView={7}
+            slidesPerView={Math.floor(window.innerWidth / 250)}
+            spaceBetween={50}
             freeMode={{
                 enabled: true
             }}

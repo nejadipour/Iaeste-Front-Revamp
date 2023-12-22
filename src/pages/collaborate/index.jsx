@@ -17,7 +17,7 @@ const TabLabel = ({isActive, iconLight, iconDark, label}) => {
     const icon = isActive ? iconLight : iconDark;
     const labelStyle = {
         margin: 0,
-        padding: "0px 80px 0px 80px",
+        padding: window.innerWidth >= 1000 ? "0px 80px 0px 80px" : null,
         color: isActive ? "#ffffff" : null,
     };
 
@@ -118,6 +118,7 @@ export default function Collaborate() {
                 centered
                 items={items}
                 onChange={onChange}
+                destroyInactiveTabPane={true}
             />
         </ConfigProvider>
     );
