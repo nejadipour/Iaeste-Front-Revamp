@@ -40,28 +40,16 @@ export default function Footer() {
             <Layout.Footer style={{bottom: 0, left: 0, right: 0}}>
                 <Row justify={"space-between"} align={"middle"} gutter={[24, 24]}>
                     <Col xs={24} xl={18}>
-                        <Row gutter={[100, 10]} justify={"space-evenly"}>
-                            <Col xs={24} md={8} lg={6}>
-                                <FooterItem to={"/internship"}>{"فرصت‌های کارآموزی"}</FooterItem>
-                                <FooterItem to={"/events"}>{"رویدادها"}</FooterItem>
-                            </Col>
-
-                            <Col xs={24} md={8} lg={6}>
-                                <FooterItem to={"/"} scroll={"steps"}>{"مراحل پذیرش"}</FooterItem>
-                                <FooterItem to={"collaborate"}>{"همکاران"}</FooterItem>
-                            </Col>
-
-                            <Col xs={24} md={8} lg={6}>
-                                <FooterItem to={"blogs"}>{"وبلاگ و اخبار"}</FooterItem>
-                                <FooterItem to={"/"} scroll={"experiences"}>{"تجربه‌ها"}</FooterItem>
-                            </Col>
-
-                            <Col xs={24} md={8} lg={6}>
-                                <FooterItem to={"about-us"}>{"درباره ما"}</FooterItem>
-                                <FooterItem to={"/contact-us"}>{"ارتباط با ما"}</FooterItem>
-                            </Col>
-                        </Row>
-
+                        <Flex gap={"large"} wrap={"wrap"}>
+                            <FooterItem to={"/internship"}>{"فرصت‌های کارآموزی"}</FooterItem>
+                            <FooterItem to={"/events"}>{"رویدادها"}</FooterItem>
+                            <FooterItem to={"/"} scroll={"steps"}>{"مراحل پذیرش"}</FooterItem>
+                            <FooterItem to={"collaborate"}>{"همکاران"}</FooterItem>
+                            <FooterItem to={"blogs"}>{"وبلاگ و اخبار"}</FooterItem>
+                            <FooterItem to={"/"} scroll={"experiences"}>{"تجربه‌ها"}</FooterItem>
+                            <FooterItem to={"about-us"}>{"درباره ما"}</FooterItem>
+                            <FooterItem to={"/contact-us"}>{"ارتباط با ما"}</FooterItem>
+                        </Flex>
                     </Col>
 
                     <Col xs={24} xl={6} flex={"auto"}>
