@@ -78,7 +78,7 @@ export default function StudentsForm() {
                         required={false}
                         rules={[{required: true, message: "نام الزامی است"}]}
                     >
-                        <Input size={"large"} placeholder="مهدخت"/>
+                        <Input size={"large"} placeholder="نام"/>
                     </Form.Item>
                 </Col>
 
@@ -91,7 +91,7 @@ export default function StudentsForm() {
                             {required: true, message: "نام خانوادگی الزامی است"},
                         ]}
                     >
-                        <Input size={"large"} placeholder="شاه مرادی"/>
+                        <Input size={"large"} placeholder="نام خانوادگی"/>
                     </Form.Item>
                 </Col>
             </Row>
@@ -102,11 +102,11 @@ export default function StudentsForm() {
                         name="email"
                         label="آدرس ایمیل"
                         required={false}
-                        rules={[{required: true, message: "آدرس ایمیل الزامی است"}]}
+                        rules={registerRules.email}
                     >
                         <Input
                             size={"large"}
-                            placeholder="mahdokht.shahmoradi@gamil.com"
+                            placeholder={"ایمیل (مثال: example@iaeste.ir)"}
                             disabled={authUser?.email}
                         />
                     </Form.Item>
@@ -116,9 +116,13 @@ export default function StudentsForm() {
                         name="phone"
                         label="شماره تماس"
                         required={false}
-                        rules={[{required: true, message: "شماره تماس الزامی است"}]}
+                        rules={registerRules.phone}
                     >
-                        <Input size={"large"} placeholder=""/>
+                        <Input
+                            addonAfter={"+"}
+                            placeholder={"موبایل (مثال: ۹۸۹۱۲۳۴۵۶۷۸۹)"}
+                            size={"large"}
+                        />
                     </Form.Item>
                 </Col>
             </Row>

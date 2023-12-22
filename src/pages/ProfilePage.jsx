@@ -15,6 +15,7 @@ import {digitsEnToFa} from "@persian-tools/persian-tools";
 import GradientButton from "../components/Button/GradientButton.jsx";
 import BagIcon from "../components/icons/BagIcon.jsx";
 import InternshipTable from "../tables/InternshipTable.jsx";
+import ProfileInfoForm from "../forms/ProfileInfoForm/index.jsx";
 
 const cardStyle = {
     borderRadius: 16,
@@ -37,6 +38,7 @@ export default function ProfilePage() {
     const eventsBaseQuery = "/events/";
     const {notification} = App.useApp();
     const [openResume, setOpenResume] = useState(false);
+    const [openEditProfile, setOpenEditProfile] = useState(false);
     const navigate = useNavigate();
 
     const fetchData = useCallback(() => {
@@ -120,7 +122,7 @@ export default function ProfilePage() {
 
                         <Flex justify={"end"} gap={12} wrap={"wrap"} style={{marginTop: 50}}>
                             <Button icon={<SyncOutlined/>}>{"تغییر رمز عبور"}</Button>
-                            <GradientButton>{"ویرایش"}</GradientButton>
+                            <GradientButton onClick={() => setOpenEditProfile(true)}>{"ویرایش"}</GradientButton>
                         </Flex>
                     </div>
 
@@ -234,6 +236,16 @@ export default function ProfilePage() {
                         <Typography.Text>فایل مورد نظر را کشیده یا انتخاب کنید</Typography.Text>
                     </Flex>
                 </Upload.Dragger>
+            </Modal>
+
+            <Modal
+                title={"ویرایش پروفایل"}
+                open={openEditProfile}
+                onCancel={() => setOpenEditProfile(false)}
+                footer={null}
+                width={1000}
+            >
+                <ProfileInfoForm initialValues={authUser}/>
             </Modal>
         </>
     )

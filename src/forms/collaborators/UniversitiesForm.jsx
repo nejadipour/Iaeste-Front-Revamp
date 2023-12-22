@@ -60,7 +60,10 @@ export default function UniversitiesForm() {
                         required
                         rules={registerRules.email}
                     >
-                        <Input size={"large"}/>
+                        <Input
+                            placeholder={"ایمیل (مثال: example@iaeste.ir)"}
+                            size={"large"}
+                        />
                     </Form.Item>
                 </Col>
 
@@ -71,7 +74,11 @@ export default function UniversitiesForm() {
                         required
                         rules={registerRules.phone}
                     >
-                        <Input size={"large"} placeholder=""/>
+                        <Input
+                            addonAfter={"+"}
+                            placeholder={"موبایل (مثال: ۹۸۹۱۲۳۴۵۶۷۸۹)"}
+                            size={"large"}
+                        />
                     </Form.Item>
                 </Col>
             </Row>

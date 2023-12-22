@@ -57,7 +57,7 @@ function ProfileInfoForm({initialValues}) {
                                 required={false}
                                 rules={[{required: true, message: "نام الزامی است"}]}
                             >
-                                <Input placeholder="مهدخت" disabled={!isEditing}/>
+                                <Input size={"large"} placeholder="نام" disabled={!isEditing}/>
                             </Form.Item>
                         </Col>
                         <Col xs={24} md={12}>
@@ -67,7 +67,7 @@ function ProfileInfoForm({initialValues}) {
                                 required={false}
                                 rules={[{required: true, message: "نام خانوادگی الزامی است"}]}
                             >
-                                <Input placeholder="شاه مرادی" disabled={!isEditing}/>
+                                <Input size={"large"} placeholder="نام خانوادگی" disabled={!isEditing}/>
                             </Form.Item>
                         </Col>
                     </Row>
@@ -80,7 +80,8 @@ function ProfileInfoForm({initialValues}) {
                                 rules={registerRules.email}
                             >
                                 <Input
-                                    placeholder="mahdokht.shahmoradi@gamil.com"
+                                    size={"large"}
+                                    placeholder={"ایمیل (مثال: example@iaeste.ir)"}
                                     disabled={initialValues?.email || !isEditing}
                                 />
                             </Form.Item>
@@ -92,7 +93,12 @@ function ProfileInfoForm({initialValues}) {
                                 required={false}
                                 rules={registerRules.phone}
                             >
-                                <Input placeholder="" disabled={!isEditing}/>
+                                <Input
+                                    size={"large"}
+                                    addonAfter={"+"}
+                                    placeholder={"موبایل (مثال: ۹۸۹۱۲۳۴۵۶۷۸۹)"}
+                                    disabled={!isEditing}
+                                />
                             </Form.Item>
                         </Col>
                     </Row>
