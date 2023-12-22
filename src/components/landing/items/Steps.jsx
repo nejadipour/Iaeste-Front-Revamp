@@ -77,15 +77,23 @@ export default function Steps() {
                 }
             }}
         >
-            <FlexCollapse items={items} mode={"vertical"} trigger={"hover"} defaultActiveKey={1}
-                          autoOpenDefaultActiveKey/>
+            <FlexCollapse
+                items={items}
+                mode={window.innerWidth > 1350 ? "vertical": "horizontal"}
+                trigger={window.innerWidth > 1350 ? "hover" : "click"}
+                defaultActiveKey={1}
+                autoOpenDefaultActiveKey
+            />
 
             <Flex>
                 <Link to={"/internship"}>
-                    <GradientButton icon={<BagIcon style={{height: "20px"}}/>} style={{
-                        display: "flex",
-                        marginTop: "1.5rem"
-                    }}>{"مشاهده فرصت‌های کارآموزی خارج از کشور"}</GradientButton>
+                    <GradientButton
+                        icon={<BagIcon style={{height: "20px"}}/>}
+                        style={{
+                            display: "flex",
+                            marginTop: "1.5rem"
+                        }}
+                    >{"مشاهده فرصت‌های کارآموزی خارج از کشور"}</GradientButton>
                 </Link>
             </Flex>
         </ConfigProvider>
