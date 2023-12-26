@@ -46,7 +46,7 @@ export default function RegisterForm(props) {
             universitiesResponse?.data?.forEach((university) => {
                 universitiesReceived.push({
                     key: university.id,
-                    value: university.id,
+                    value: university.name,
                     label: university.name
                 })
             })
@@ -60,13 +60,14 @@ export default function RegisterForm(props) {
     }, [client])
 
     const onFinish = (values) => {
-        // client.post("", values)
-        //     .then(() => {
-        //         notification.success({message: "ثبت‌نام با موفقیت انجام شد"})
-        //     })
-        //     .catch(() => {
-        //         notification.error({message: "خطا در ثبت‌نام"});
-        //     })
+        client.post("/auth/register/", values)
+            .then(() => {
+                notification.success({message: "ثبت‌نام با موفقیت انجام شد"});
+                switcher("login");
+            })
+            .catch(() => {
+                notification.error({message: "خطا در ثبت‌نام"});
+            })
     }
 
     useEffect(() => {
@@ -82,14 +83,20 @@ export default function RegisterForm(props) {
                     ثبت نام
                 </div>
 
-                <Form.Item>
+                <Form.Item
+                    key={"first_name"}
+                    name={"first_name"}
+                >
                     <Input
                         placeholder={"نام"}
                         size={"large"}
                     />
                 </Form.Item>
 
-                <Form.Item>
+                <Form.Item
+                    key={"last_name"}
+                    name={"last_name"}
+                >
                     <Input
                         placeholder={"نام خانوادگی"}
                         size={"large"}
