@@ -18,6 +18,7 @@ import "../styles/eventPage.css";
 import GradientButton from "../components/Button/GradientButton";
 import {Link, useParams} from "react-router-dom";
 import {useClient} from "../contexts/client/ClientContext";
+import {DollarOutlined} from "@ant-design/icons";
 
 const EventPage = () => {
     const {id} = useParams();
@@ -59,7 +60,7 @@ const EventPage = () => {
                                     value={data.registrationEndDate}
                                 />
                                 <Row
-                                    icon={<TimeIcon fill="var(--color-primary)"/>}
+                                    icon={<DollarOutlined style={{color: "var(--color-primary)"}}/>}
                                     title="هزینه ثبت نام"
                                     value={data.eventDefaultAmount ? `${data.eventDefaultAmount} تومان` : "رایگان"}
                                 />
@@ -123,7 +124,7 @@ const EventPage = () => {
                                 <Card
                                     key={presenter.id}
                                     cover={
-                                        <img alt={presenter.name} src={presenter.profile_picture}/>
+                                        <img style={{maxHeight: 300, objectFit: "cover"}} alt={presenter.name} src={presenter.profile_picture}/>
                                     }
                                 >
                                     <Card.Meta
@@ -151,7 +152,9 @@ const EventPage = () => {
                     )}
                     <section>
                         <Typography.Title level={3}>توضیحات رویداد</Typography.Title>
-                        <Typography.Paragraph>{data.description}</Typography.Paragraph>
+                        <Typography.Paragraph style={{whiteSpace: "break-spaces"}}>
+                            {data.description}
+                        </Typography.Paragraph>
                     </section>
                     {data.status === EVENT_STATUS.attended && (
                         <section>
