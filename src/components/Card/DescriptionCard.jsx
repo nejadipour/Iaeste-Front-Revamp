@@ -1,10 +1,19 @@
-import {useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {Card, Col, ConfigProvider, Image, Row, Typography} from "antd";
 import QueueAnim from "rc-queue-anim";
 
 export default function DescriptionCard(props) {
     const [isHovered, setIsHovered] = useState(false);
     const {src, icon, title, description, objectPosition} = props;
+    const titleRef = useRef(null);
+    const [titleHeight, setTitleHeight] = useState("20%");
+
+    useEffect(() => {
+        const titleElement = titleRef.current;
+        if (titleElement) {
+            setTitleHeight(titleElement.offsetHeight + 10);
+        }
+    }, [])
 
     return (
         <ConfigProvider
@@ -45,13 +54,13 @@ export default function DescriptionCard(props) {
                                     width: "100%",
                                     background: "linear-gradient(to right, rgba(11, 61, 89, 0.8), rgba(17, 124, 118, 0.8))",
                                     padding: "8px",
-                                    height: isHovered ? "100%" : "20%",
+                                    height: isHovered ? "100%" : titleHeight,
                                     overflow: "hidden",
                                     transition: "0.3s ease-in-out",
                                     borderRadius: isHovered ? "0px 5px 5px 0px" : "0px 0px 5px 0px"
                                 }}
                             >
-                                <Typography.Title style={{marginTop: 0, direction: "ltr"}} level={4}>
+                                <Typography.Title ref={titleRef} style={{marginTop: 0, direction: "ltr"}} level={4}>
                                     {title}
                                 </Typography.Title>
                                 {isHovered &&
@@ -75,7 +84,7 @@ export default function DescriptionCard(props) {
                                     left: 0,
                                     width: "100%",
                                     backgroundColor: "#0b3d59",
-                                    height: isHovered ? "100%" : "20%",
+                                    height: isHovered ? "100%" : titleHeight,
                                     overflow: "hidden",
                                     transition: "0.3s ease-in-out",
                                     borderRadius: isHovered ? "5px 0px 0px 5px" : "0px 0px 0px 5px"
