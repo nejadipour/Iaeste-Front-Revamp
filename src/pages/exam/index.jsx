@@ -1,40 +1,79 @@
-import React from "react";
-import CustomTabs from "../../components/Tabs/index.jsx";
+import {useState} from "react";
 import ExamIcon from "../../../assets/icons/exam.svg?react";
 import ResultsIcon from "../../../assets/icons/results.svg?react";
 import '../../styles/examPage.css'
 import RegisterExam from "./RegisterExam.jsx";
 import ExamResult from "./ExamResult.jsx";
+import CustomTabs from "../../components/Tabs/index.jsx";
+import {useAuth} from "../../contexts/authentication/AuthContext.jsx";
+import {Button, Flex, Modal, Result, Typography} from "antd";
+import {useNavigate, useSearchParams} from "react-router-dom";
 
-const ExamsPage = () => {
+
+const items = [
+    {
+        key: "register",
+        iconLight: <ExamIcon/>,
+        iconDark: <ExamIcon/>,
+        label: "ثبت نام در آزمون",
+        children: <RegisterExam/>,
+    },
+    {
+        key: "result",
+        iconLight: <ResultsIcon/>,
+        iconDark: <ResultsIcon/>,
+        label: "مشاهده نتایج",
+        children: <ExamResult/>,
+        disabled: true
+    }
+]
+
+export default function ExamsPage() {
+    const {authUser} = useAuth();
+    const navigate = useNavigate();
+    const [openModal, setOpenModal] = useState(false);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const paymentStatus = searchParams.get("paymentStatus");
+
+    if (paymentStatus && !openModal) {
+        setOpenModal(true);
+    }
+
     return (
-        <div>
-            <CustomTabs
-                items={[
-                    {
-                        key: "register",
-                        label: (
-                            <CustomTabs.Label
-                                label="ثبت نام در آزمون"
-                                icon={<ExamIcon width={30} height={30}/>}
-                            />
-                        ),
-                        children: <RegisterExam/>,
-                    },
-                    {
-                        key: "result",
-                        label: (
-                            <CustomTabs.Label
-                                label="مشاهده نتایج"
-                                icon={<ResultsIcon width={30} height={30}/>}
-                            />
-                        ),
-                        children: <ExamResult/>,
-                    },
-                ]}
-            />
-        </div>
-    );
-};
+        <>
+            {
+                authUser ?
+                    <CustomTabs
+                        centered={false}
+                        items={items}
+                        defaultActiveKey={"register"}
+                    /> :
+                    <Flex vertical gap={16} style={{textAlign: "center"}}>
+                        <Typography.Text>
+                            برای دسترسی به این صفحه، ابتدا وارد شوید.
+                        </Typography.Text>
+                        <Button type="primary" onClick={() => navigate("/auth")}
+                                style={{alignSelf: 'center', width: 200}}>
+                            ورود
+                        </Button>
+                    </Flex>
+            }
 
-export default ExamsPage;
+            <Modal
+                open={openModal}
+                cancelButtonProps={{style: {display: "none"}}}
+                closeIcon={null}
+                onOk={() => {
+                    searchParams.delete("paymentStatus");
+                    setSearchParams(searchParams);
+                    setOpenModal(false);
+                }}
+            >
+                <Result
+                    status={paymentStatus === "OK" ? "success" : "error"}
+                    subTitle={paymentStatus === "OK" ? "ثبت نام شما با موفقیت انجام شد" : "ثبت نام شما با خطا مواجه شد"}
+                />
+            </Modal>
+        </>
+    );
+}
