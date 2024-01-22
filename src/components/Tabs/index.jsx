@@ -1,57 +1,75 @@
 import {ConfigProvider, Flex, Tabs, Typography} from "antd";
-import React, {useState} from "react";
-// import "../../styles/tabs.css";
+import {cloneElement, useState} from "react";
 
-const CustomTabs = ({items, ...props}) => {
-    const [activeKey, setActiveKey] = useState(props.defaultActiveKey);
 
-    const onChange = (newActiveKey) => {
-        setActiveKey(newActiveKey);
-    }
+const iconStyle = {height: 35};
 
-    const items2 = [
-
-    ]
-
-    return (
-        <div className="custome-tab">
-            <ConfigProvider
-                theme={{
-                    components: {
-                        Tabs: {
-                            itemSelectedColor: "#ffffff",
-                            // cardBg: "#0b3d59",
-                        },
-                    },
-                    token: {
-                        // colorBgContainer: "#0b3d59",
-                    },
-                }}
-            >
-                <Tabs
-                    size={"large"}
-                    defaultActiveKey={activeKey}
-                    type={"card"}
-                    items={items}
-                    onChange={props.onChange || onChange}
-                    {...props}
-                />
-            </ConfigProvider>
-        </div>
-    );
-};
-
-CustomTabs.Label = function Label({icon, label}) {
-    const labelStyle = {margin: 0, padding: "0px 20px 0px 20px"};
+const TabLabel = ({isActive, iconLight, iconDark, label}) => {
+    const icon = isActive ? iconLight : iconDark;
+    const labelStyle = {
+        margin: 0,
+        padding: window.innerWidth >= 1000 ? "0px 80px 0px 80px" : null,
+        color: isActive ? "#ffffff" : null,
+    };
 
     return (
         <Typography.Title level={5} style={labelStyle}>
             <Flex gap={10} align={"center"}>
-                {icon}
+                {cloneElement(icon, {style: iconStyle})}
                 {label}
             </Flex>
         </Typography.Title>
     );
 };
 
-export default CustomTabs;
+
+export default function CustomTabs(props) {
+    const [activeKey, setActiveKey] = useState(props.defaultActiveKey);
+
+    const onChange = (newActiveKey) => {
+        setActiveKey(newActiveKey);
+    };
+
+    const items = props.items.map((item) => {
+        const isActive = item.key === activeKey;
+        const iconLight = item.iconLight;
+        const iconDark = item.iconDark;
+        const label = item.label;
+        return {
+            key: item.key,
+            label: (
+                <TabLabel
+                    isActive={isActive}
+                    iconLight={iconLight}
+                    iconDark={iconDark}
+                    label={label}
+                />
+            ),
+            children: item.children,
+            disabled: item.disabled
+        };
+    })
+
+    return (
+        <ConfigProvider
+            theme={{
+                components: {
+                    Tabs: {
+                        itemSelectedColor: "#ffffff",
+                        colorBgContainer: "#0b3d59",
+                    },
+                },
+            }}
+        >
+            <Tabs
+                size={"large"}
+                type={"card"}
+                centered
+                destroyInactiveTabPane={true}
+                {...props}
+                items={items}
+                onChange={onChange}
+            />
+        </ConfigProvider>
+    )
+}
