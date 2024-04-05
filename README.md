@@ -1,6 +1,6 @@
 # IAESTE Iran Frontend Revamp
 
-This repository contains the code for the redevelopment of the IAESTE Iran website. The project was built using React and Vite, with the goal of providing a modern, user-friendly interface for the organization's online platform.
+This repository contains the code for the redevelopment of the IAESTE Iran website. The project was built using React, Ant Design and Vite, with the goal of providing a modern, user-friendly interface for the organization's online platform.
 
 ## Project Status
 
@@ -9,6 +9,11 @@ As of now, development on this project has ceased. Due to unforeseen circumstanc
 ## Usage
 
 Despite the halt in development, the code has been used for the IAESTE Iran's website and can be accessed at [www.iaeste.ir](http://www.iaeste.ir).
+Here are some screenshots of the application:
+
+![Homepage](./assets/screenshots/img.png)
+![Steps](./assets/screenshots/img_1.png)
+![Slider for Experiences](./assets/screenshots/img_2.png)
 
 ## Acknowledgements
 
